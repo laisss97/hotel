@@ -20,19 +20,17 @@ Data: 11 /10 /2018
 
 	<section>
 		<nav>
-			<a href="?funcao=homeLogin">Início</a>
-			<a href="?funcao=alterarCadastro">Alterar cadastro</a>
-			<a href="?funcao=reservar">Reservar</a>
-			<a href="?funcao=cancelarReserva">Cancelar reserva</a>
+			<a href="?funcao=home">Início</a>
+			<a href="?funcao=login">Login</a>
+			<a href="?funcao=cadastro">Cadastro</a>
 			<a href="?funcao=quartos">Quartos</a>
 			<a href="?funcao=servicos">Serviços</a>
-			<a href="?funcao=sairLogin">Sair</a>
 		</nav>
 	</section>
 
 	<article>
-		<h2>Bem vindo <?php echo $_SESSION['nomeHospede']; ?> !</h2>
-		<p>O Hotel Palácios está há 200 anos oferecendo hospedagem, conforto e requinte para seus hóspedes.</p>
+		<h2>Login</h2>
+		<p><?= $msg; ?></p>
 	</article>
 
 	<footer> 

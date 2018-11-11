@@ -129,7 +129,8 @@ class Controle {
     public function sairLogin() {
 
         // flag de login recebe 0
-        unset($nome);
+        //unset($nome);
+        //unset ($_SESSION['sucesso']);
         require 'view/home.php';
     }
 
@@ -167,12 +168,18 @@ class Controle {
             $email = $_POST['email'];
             $senha = $_POST['senha'];
             
+            $result = $this->manager->processaLogin($email, $senha);
 
-            $resposta = $this->manager->processaLogin($email, $senha);
+            $_SESSION['nomeHospede'] = $result;
 
-            $nome = $_POST['nome']; // Para tratar o hospede pelo nome
-                
-            require 'view/homeLogin.php';
+            if($_SESSION['sucesso'] == 0){
+                $msg = $result;
+                require 'view/mensagemLogin.php';
+            }
+            else{
+                $_SESSION['sucesso'] = 1;
+                require 'view/homeLogin.php';
+            }
         }
     }  
 

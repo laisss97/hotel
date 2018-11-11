@@ -39,10 +39,15 @@ abstract class AbstractFactory {
     (PDOStatement $result, $nameObject): array {
         $list = array();
         $r = $result->fetchAll(PDO::FETCH_NUM);
+        
         foreach ($r as $row) {
-            unset($row[0]); //essa linha foi comentada pois ignorava o id do objeto
+            
+            //unset($row[0]); //essa linha foi comentada pois ignorava o id do objeto
+            
             $ref = new ReflectionClass($nameObject);
+            
             $list[] = $ref->newInstanceArgs($row);
+            
         }
         return $list;
     }

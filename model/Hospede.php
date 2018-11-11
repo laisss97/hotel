@@ -2,6 +2,8 @@
 
 class Hospede {
 
+    private  $id;
+
 	private  $nome;
     private  $email;
     private  $telefone;
@@ -15,9 +17,11 @@ class Hospede {
 
     private  $senha;
 
-    public function __construct(string $nome, string $email, string $telefone, string $dataNascimento, 
-        string $cpf, string $rua, string $numeroCasa, string $bairro, string $cep, string $senha) {
+    public function __construct(string $id="", string $nome, string $email, string $telefone, 
+                                string $dataNascimento, string $cpf, string $rua, string $numeroCasa, 
+                                string $bairro, string $cep, string $senha) {
 
+        $this->id = $id;
         $this->nome = $nome;
 		$this->email = $email;
         $this->telefone = $telefone;
@@ -29,6 +33,14 @@ class Hospede {
         $this->cep = $cep;
         $this->senha = $senha;
         
+    }
+
+    /**
+     * Retorna o id do contato. A declaração do método está usando o tipo de retorno.
+     * @return id - string
+     */
+    public function getId(): string {
+        return $this->id;
     }
 
     public function getNome(): string{
@@ -72,7 +84,7 @@ class Hospede {
     }
 
     // set
-
+    
     public function setNome(string $nome) {
         $this->nome = $nome;
     }

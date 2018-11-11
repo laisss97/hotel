@@ -47,15 +47,15 @@ class HotelFactory extends AbstractFactory {
             return $result;
     }
 
-   /* /**
+    /**
 	* Lista os objetos persistidos no banco, que possuem o $email.
 	* @param string $email - email a ser buscado.
 	* @return  array -  Array de objetos da classe, ou null se não encontrar
 	* objetos.
 	*/
 	
-	/*public function buscarPorEmail($param): array { // tem que ajustar
-		$sql = "SELECT * FROM tbcontato WHERE email='" . $param . "'";
+	public function buscarPorEmail($param): array { // tem que ajustar
+		$sql = "SELECT * FROM tbhospede WHERE email='" . $param . "'";
 
 		try {
 			$resultRows = $this->db->query($sql);
@@ -64,17 +64,17 @@ class HotelFactory extends AbstractFactory {
 				throw new Exception("Tem erro no seu SQL!<br> '" . $sql . "'");
 			}
 
-			$resultObject = $this->queryRowsToListOfObjects($resultRows, "Contato");
+			$resultObject = $this->queryRowsToListOfObjects($resultRows, "Hospede");
+
 		} catch (Exception $exc) {
 
 			echo $exc->getMessage();
 			$resultObject = null;
 		}
-
+		
 		return $resultObject;
 	}
-	*/
-
+	
 
     /*
 
