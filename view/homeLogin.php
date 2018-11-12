@@ -31,7 +31,7 @@ Data: 11 /10 /2018
 	</section>
 
 	<article>
-		<h2>Bem vindo <?php echo $_SESSION['nomeHospede']; ?> !</h2>
+		<h2>Bem vindo <?= $nome; ?> !</h2>
 		<p>O Hotel Palácios está há 200 anos oferecendo hospedagem, conforto e requinte para seus hóspedes.</p>
 	</article>
 
