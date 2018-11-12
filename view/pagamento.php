@@ -21,13 +21,7 @@ Data: 11 /10 /2018
 	<section>
 		<nav>
 			<a href="?funcao=homeLogin">Início</a>
-			<a href="?funcao=alterarCadastro">Alterar cadastro</a>
-			<a href="?funcao=reservar">Reservar</a>
-			<a href="?funcao=alterarReserva">Alterar reserva</a>
-			<a href="?funcao=cancelarReserva">Cancelar reserva</a>
-			<a href="?funcao=quartos">Quartos</a>
-			<a href="?funcao=servicos">Serviços</a>
-			<a href="?funcao=sairLogin">Sair</a>
+			
 		</nav>
 	</section>
 
