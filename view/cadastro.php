@@ -51,7 +51,6 @@ Data: 11 /10 /2018
 	        <p>
 		            <label>Telefone para contato:</label><br>
 		            <input type="tel" name="telefone" 
-		            		pattern="(\+\d{1,3})?\s?([\(]?\d{2,3}[\)]?)?\s?\d{4,5}\s?-?\d{4}" 
 		                   title="telgeral" placeholder="Telefone" required><br>
 
 		            <!--input type="submit" value="Enviar"-->
