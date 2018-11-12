@@ -13,6 +13,7 @@ class HotelFactory extends AbstractFactory {
     public function salvar($obj) {
     	
         $novoHospede = $obj;
+
         
 		try {
 		        $data = [ 'nome' => $novoHospede->getNome(), 
@@ -74,7 +75,73 @@ class HotelFactory extends AbstractFactory {
 		
 		return $resultObject;
 	}
-	
+
+	/**
+	* Modifica/atualiza o objeto persistido no banco.
+	* @param  $obj - objeto a ser atualizado com as suas devidas modificações.
+	* @return  boolean - se conseguiu atualizar ou não.
+	*/
+    public function atualizar($obj) {
+
+        $hospede = $obj;
+
+        try {
+            $sql = "UPDATE tbhospede SET
+				nome='". $hospede->getNome() . "',
+				email='". $hospede->getEmail() . "',
+				telefone='". $hospede->getTelefone() . "',
+				dataNascimento='". $hospede->getDataNascimento() . "',
+				cpf='". $hospede->getCpf() . "',
+				rua='". $hospede->getRua() . "',
+				numeroCasa='". $hospede->getNumeroCasa() . "',
+				bairro='". $hospede->getBairro() . "',
+				cep='". $hospede->getCep() . "',
+				senha='". $hospede->getSenha() . "'
+				
+				WHERE id='"
+                . $hospede->getId() . "' ";
+
+                if ($this->db->exec($sql)) {
+                    $result = true;
+                } else {
+                    $result = false;
+                }
+            } catch (PDOException $exc) {
+                echo $exc->getMessage();
+                $result = false;
+            }
+
+            return $result;
+    }
+
+
+/*	/**
+	* Lista os objetos persistidos no banco, que possuem o $id.
+	* @param string $id - id a ser buscado.
+	* @return  array -  Array de objetos da classe, ou null se não encontrar
+	* objetos.
+	*/
+/*	public function buscar(string $param): array{
+		$sql = "SELECT * FROM tbhospede WHERE id='" . $param . "'";
+
+		try {
+			$resultRows = $this->db->query($sql);
+
+			if (!($resultRows instanceof PDOStatement)) {
+				throw new Exception("Tem erro no seu SQL!<br> '" . $sql . "'");
+			}
+
+			$resultObject = $this->queryRowsToListOfObjects($resultRows, "Contato");
+		} catch (Exception $exc) {
+
+			echo $exc->getMessage();
+			$resultObject = null;
+		}
+
+		return $resultObject;
+	}
+
+	*/
 
     /*
 

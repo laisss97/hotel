@@ -25,8 +25,9 @@ class HotelManager {
                              $numeroCasa, $bairro, $cep, $senha){
 
         $result = $this->factory->buscarPorEmail($email);
+        //var_dump($result);
 
-        // se o resultado for igual a 0 itens, então salva contato
+        // se o resultado for igual a 0 itens, então salva hospede
         if (count($result) == 0) {
 
             $hospede = new Hospede("", $nome, $email, $telefone, $dataNascimento, $cpf, 
@@ -59,6 +60,39 @@ class HotelManager {
      
     }
 
+    public function alterarCadastro($nome, $email, $telefone, $dataNascimento, $cpf, $rua, 
+                             $numeroCasa, $bairro, $cep, $senha): string{
+
+        //consulta o e-mail no banco
+        $result = $this->factory->buscarPorEmail($email);
+
+        // se o resultado for igual a 0 itens, então salva hospede
+        if (count($result) == 0) {
+            $sucesso = false;
+            $msg = "Não foi possível alterar seu cadastro.";
+            $hospede = current($result);
+        }
+        else {
+
+            $hospede = current($result);
+            $hospede -> setNome($nome);
+            $hospede -> setEmail($email);
+            $hospede -> setTelefone($telefone);
+            $hospede -> setDataNascimento($dataNascimento);
+            $hospede -> setCpf($cpf);
+            $hospede -> setRua($rua);
+            $hospede -> setNumeroCasa($numeroCasa);
+            $hospede -> setBairro($bairro);
+            $hospede -> setCep($cep);
+            $hospede -> setSenha($senha);
+            
+            $sucesso = $this->factory->atualizar($hospede);     
+        }
+            $msg = "Obrigado " . $nome . "!!!" . " Seu cadastro foi atualizado com sucesso!";
+
+        return $msg;
+    }
+
     public function processaLogin(string $email, string $senha): string {
 
         session_start();
@@ -69,7 +103,6 @@ class HotelManager {
             $msg = "Este email não está cadastrado!";
             $_SESSION['sucesso'] = 0;
             return $msg;
-
         }
 
         if($hospede[0]->getSenha() != $senha){
@@ -85,8 +118,17 @@ class HotelManager {
         
     }
 
+    
     public function verificaDisponibilidade(){
 
+    }
+
+
+    public function busca(string $email): array{
+
+        $hospede = $this->factory->buscarPorEmail($email);
+
+        return $hospede;
     }
 
    /*

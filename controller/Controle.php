@@ -41,10 +41,6 @@ class Controle {
             $this->homeLogin();
             break;        
             
-            case "alterarCadastro":
-            $this->alterarCadastro();
-            break;
-
             case "reservar":
             $this->reservar();
             break;
@@ -63,6 +59,10 @@ class Controle {
 
             case "processaCadastro":
             $this->processaCadastro();
+            break;
+
+            case "alterarCadastro":
+            $this->alterarCadastro();
             break;
 
             case "processaLogin":
@@ -108,12 +108,7 @@ class Controle {
         require 'view/homeLogin.php';
     }
 
-    public function alterarCadastro() {
-
-
-        require 'view/alteraCadastro.php';
-    }
-
+    
     public function reservar() {
         require 'view/reservas.php';
     }
@@ -136,7 +131,6 @@ class Controle {
 
     public function processaCadastro() {
         
-    
         if (isset($_POST['cadastroEnviado'])) 
         {
             $nome = $_POST['nome'];
@@ -150,27 +144,67 @@ class Controle {
             $bairro = $_POST['bairro'];
             $cep = $_POST['cep'];
             $senha = $_POST['senha'];
-
-        
+  
             $msg = $this->manager->cadastra($nome, $email, $telefone, $dataNascimento, $cpf,
                                                 $rua, $numeroCasa, $bairro, $cep, $senha);
-            
-            require 'view/mensagemCadastro.php';
 
+            require 'view/mensagemCadastro.php';
         }
     }  
+
+    public function alterarCadastro() {
+
+        if (isset($_POST['alteraCadastroEnviado'])) {
+            try {
+                    $nome = $_POST['nome'];
+                    $email = $_POST['email'];
+                    $telefone = $_POST['telefone'];
+
+                    $dataNascimento = $_POST['dataNascimento'];
+                    $cpf = $_POST['cpf'];
+                    $rua = $_POST['rua'];
+                    $numeroCasa = $_POST['numeroCasa'];
+                    $bairro = $_POST['bairro'];
+                    $cep = $_POST['cep'];
+                    $senha = $_POST['senha'];
+
+        
+                    $msg = $this->manager->alterarCadastro($nome, $email, $telefone, $dataNascimento,                            $cpf, $rua, $numeroCasa, $bairro, $cep, $senha);
+    
+            } catch (Exception $e) {
+                    $msg = $e->getMessage();
+            }
+
+            require 'view/mensagemAlteraCadastro.php';
+        }
+        else{ 
+
+            try{
+
+                //$email = $_GET['email'];
+                $email = "aleatorio@gmail.com";
+
+                $hospede = $this->manager->busca($email);
+                require 'view/alteraCadastro.php';
+
+
+            } catch (Exception $e) {
+                $msg = $e->getMessage();
+                require 'view/mensagemAlteraCadastro.php';
+            }
+        }
+    }
 
     public function processaLogin() {
         
         if (isset($_POST['loginEnviado'])) 
-        {
-            
+        {   
             $email = $_POST['email'];
             $senha = $_POST['senha'];
             
             $result = $this->manager->processaLogin($email, $senha);
 
-            $_SESSION['nomeHospede'] = $result;
+            //$_SESSION['nomeHospede'] = $result;
 
             if($_SESSION['sucesso'] == 0){
                 $msg = $result;
@@ -178,11 +212,11 @@ class Controle {
             }
             else{
                 $_SESSION['sucesso'] = 1;
+                $nome = $result;
                 require 'view/homeLogin.php';
             }
         }
     }  
-
 
     public function verificaDisponibilidade() {
         
@@ -202,15 +236,11 @@ class Controle {
     public function escolherQuarto() {
         
         if (isset($_POST['quartoEnviado'])) 
-        {
-            
+        {           
             // bla bla bla
-   
-            require 'view/pagamento.php';
-            
+            require 'view/pagamento.php';           
         }
     }  
-
 }
 /*
 
