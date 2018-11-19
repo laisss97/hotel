@@ -1,3 +1,7 @@
 # hotel
-Sistema de gerenciamento de reservas de um hotel específico
-As partes que correspondem a HTML e CSS foram feitas por Isadora Ajala Martinez
+Grupo 8
+
+Sistema de gerenciamento de reservas de um hotel específico: Hotel Palácios.
+
+Lais Santos de Souza: responsável pela programação em PHP.
+Isadora Ajala Martinez: responsável pela documentação e as partes de layout em HTML e CSS.
