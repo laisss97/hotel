@@ -15,26 +15,24 @@ abstract class AbstractFactory {
         {
             $this->db = new PDO( 'mysql:host=' . MYSQL_HOST . ';dbname=' . MYSQL_DB_NAME.';charset=utf8', MYSQL_USER, MYSQL_PASSWORD );
             //$this->db = setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-       
         }
-        catch ( PDOException $e )
-        {
+        catch ( PDOException $e ){
             echo 'Erro ao conectar com o MySQL: ' . $e->getMessage();
         }
     }
 
     abstract public function salvar($obj);
-
-    // abstract public function listar(): array;
-
+    abstract public function buscarPorEmail($param): array;
+    abstract public function atualizar($obj); 
+    abstract public function buscaReservas();
+    
     /**
     * Lista os objetos persistidos no banco, que possuem o $email.
     * @param string $email - email a ser buscado.
     * @return  array -  Array de objetos da classe, ou null se não encontrar
     * objetos.
     */
-   // public function buscarPorEmail($param): array;
-
+   
     protected function queryRowsToListOfObjects
     (PDOStatement $result, $nameObject): array {
         $list = array();

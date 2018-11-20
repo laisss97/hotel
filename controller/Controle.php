@@ -124,8 +124,9 @@ class Controle {
     public function sairLogin() {
 
         // flag de login recebe 0
-        //unset($nome);
-        //unset ($_SESSION['sucesso']);
+        unset($_SESSION['nomeHospede']);
+        unset($_SESSION['emailHospede']);
+        unset ($_SESSION['sucesso']);
         require 'view/home.php';
     }
 
@@ -181,11 +182,17 @@ class Controle {
 
             try{
 
-                //$email = $_GET['email'];
-                $email = "aleatorio@gmail.com";
-
-                $hospede = $this->manager->busca($email);
-                require 'view/alteraCadastro.php';
+                if(isset($_SESSION['emailHospede'])){
+                    //$email = "aleatorio@gmail.com";
+                    $email = $_SESSION['emailHospede'];
+                    $hospede = $this->manager->busca($email);
+                    require 'view/alteraCadastro.php';
+                }
+                else
+                {
+                    $msg = "Você não está logado.";
+                    require 'view/mensagemAlteraCadastro.php';
+                }
 
 
             } catch (Exception $e) {
@@ -204,7 +211,9 @@ class Controle {
             
             $result = $this->manager->processaLogin($email, $senha);
 
-            //$_SESSION['nomeHospede'] = $result;
+            //session_start();
+            $_SESSION['nomeHospede'] = $result;
+            $_SESSION['emailHospede'] = $email;
 
             if($_SESSION['sucesso'] == 0){
                 $msg = $result;
@@ -222,11 +231,17 @@ class Controle {
         
         if (isset($_POST['disponibilidadeEnviado'])) 
         {
+            $dataEntrada = $_POST['dataEntrada'];
+            $dataSaida = $_POST['dataSaida'];
             
-            // bla bla bla
+            $sucesso = $this->manager->verificaDisponibilidade($dataEntrada);
 
-            // se der certo 
-                require 'view/escolherQuarto.php';
+            //salvar dataEntrada e dataSaida em sessão
+
+            echo "sucesso:\n";
+            var_dump($sucesso);
+
+            require 'view/escolherQuarto.php';
             // se der errado
                 // setar variavel flag
                // require 'view/reservas.php'

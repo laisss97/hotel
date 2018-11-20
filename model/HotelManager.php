@@ -95,8 +95,6 @@ class HotelManager {
 
     public function processaLogin(string $email, string $senha): string {
 
-        session_start();
-
         $hospede = $this->factory->buscarPorEmail($email);
 
         if (count($hospede) == 0) {
@@ -118,33 +116,27 @@ class HotelManager {
         
     }
 
-    
-    public function verificaDisponibilidade(){
+    public function verificaDisponibilidade(String $dataEntrada){
+
+        echo "Reserva manager\n";
+        
+        $reservas = $this->factory->buscaReservas();
+
+        var_dump($reservas);
+
+        return true;
+
+        // verifica se $dataEntrada está dentro do intervalo das datas, 
+        // quantas vezes está e se essa quantidade ultrapassa a quantidade
+        // de quartos
 
     }
-
 
     public function busca(string $email): array{
 
         $hospede = $this->factory->buscarPorEmail($email);
 
         return $hospede;
-    }
-
-   /*
-    public function salvarHistorico($infoConversao){
-
-        $sucesso = $this->factory->salvar($infoConversao);
-
-    }
-
-    public function lista() {
-
-        $historicoConversao = $this->factory->listar();
-        return $historicoConversao;
-    }
-
-    */
-    
+    }    
 }
 ?>

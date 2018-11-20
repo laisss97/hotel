@@ -76,6 +76,28 @@ class HotelFactory extends AbstractFactory {
 		return $resultObject;
 	}
 
+	public function buscaReservas(){
+
+		$sql = 'SELECT * FROM tbreserva';
+
+		try {
+			$resultRows = $this->db->query($sql);
+
+			if (!($resultRows instanceof PDOStatement)) {
+				throw new Exception("Tem erro no seu SQL!<br> '" . $sql . "'");
+			}
+
+			$resultObject = $this->queryRowsToListOfObjects($resultRows, "dataSaida");
+
+		} catch (Exception $exc) {
+
+			echo $exc->getMessage();
+			$resultObject = null;
+		}
+		
+		return $resultObject;
+	}
+
 	/**
 	* Modifica/atualiza o objeto persistido no banco.
 	* @param  $obj - objeto a ser atualizado com as suas devidas modificações.
