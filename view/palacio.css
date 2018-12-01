@@ -210,3 +210,50 @@ div.reserva {
     
     
 }
+/*Tela de Pagamento*/
+
+div.pagamento {
+    background-color: #CDB38B;
+    padding: 65px;
+    border: 10px solid #8B795E;
+    text-align: center;
+    
+}
+
+div.pagamento form{
+    width: 500px;    
+    margin: auto;
+    display: block;
+    border: 5px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+
+}
+
+div.pagamento input{
+    width: 450px;
+    padding: 4px 10px;
+    margin: 8px 0;
+    display: block;
+    border: 5px solid #ccc;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+
+div.pagamento input[type=submit]{
+    background-color: #8B795E; 
+    border: 5px solid #33FF33;
+    border-radius: 12px;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+div.pagamento input[type=radio]{
+    cursor: pointer;
+}
