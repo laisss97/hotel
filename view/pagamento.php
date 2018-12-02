@@ -25,7 +25,7 @@ Data: 1 /12 /2018
 	<div class="pagamento">
 	<h2>Pagamento</h2> 
 
-	<h3>Por favor escolha o tipo de pagamento:</h3>
+	<h3>Por favor escolha o tipo de pagamento: </h3>
 	
 		<form action="action_page.php">
 			<p>
