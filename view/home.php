@@ -3,7 +3,7 @@
 <!-- 
 Trablaho de Programação Web.
 Tema: reserva de quarto em hotel.
-Data: 11 /10 /2018
+Data: 1 /12 /2018
 -->
 <html lang="pt-br">
 <head>
@@ -31,8 +31,11 @@ Data: 11 /10 /2018
 	<article>
 		<h2>Bem vindo!</h2>
 		<p>O Hotel Palácios está há 200 anos oferecendo hospedagem, conforto e requinte para seus hóspedes.</p>
+		<p>Fundado por Don Cássio de Santana Silvério e a baronesa Hilda Teodora Miranda Lourenço, o Hotel Palácios foi fundado com o objetivo de proporcionar serviços de hospedagem de excelência para cidadãos de alto poder aquisitivo, personagens da política mundial e celebridades.</p>
+
+		<!--Galeria de imagens internas do hotel-->		
+
 		
-		<!--Galeria de imagens internas do hotel-->
 
 		<div class="gallery">
 			<a target="_blank" href="https://media-cdn.tripadvisor.com/media/photo-s/0a/63/9c/f4/recepcao.jpg">
@@ -62,12 +65,12 @@ Data: 11 /10 /2018
 			<div class="desc">Spa</div>
 		</div>
 
-		<div class="gallery">
-			<a target="_blank" href="http://www.sw-hotelguide.com/portugal/bussaco/palace-hotel-bussaco/images/stories/rotators/restaurants/restaurants_03.jpg">
-				<img src="http://www.sw-hotelguide.com/portugal/bussaco/palace-hotel-bussaco/images/stories/rotators/restaurants/restaurants_03.jpg" alt="salão de festas" width="200" height="200">
+		<!--<div class="gallery"> 
+			<a target="_blank" href="http://www.maripelomundo.com.br/wp-content/uploads/2015/12/Pal%C3%A1cio-Nacional-da-Ajuda-em-Lisboa-Sal%C3%A3o-de-Banquetes.jpg">
+				<img src="http://www.maripelomundo.com.br/wp-content/uploads/2015/12/Pal%C3%A1cio-Nacional-da-Ajuda-em-Lisboa-Sal%C3%A3o-de-Banquetes.jpg" alt="salão de festas" width="200" height="200">
 			</a>
 			<div class="desc">Salão de Festas</div>
-		</div>
+		</div>-->
 
 		<div class="gallery">
 			<a target="_blank" href="http://apureguria.com/wp-content/uploads/2016/02/academia-hotel-alpestre.jpg">
