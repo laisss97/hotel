@@ -76,10 +76,15 @@ class HotelFactory extends AbstractFactory {
 		return $resultObject;
 	}
 
-	public function buscaReservas(){
+	public function countDatas(String $dataEntrada, String $dataSaida, String $quarto): array{
 
-		$sql = 'SELECT * FROM tbreserva';
+		//$sql = "SELECT * FROM tbreserva"; // Escrever SQL
+		$sql = "SELECT COUNT(" . $quarto . ") FROM tbreserva " .
+		"WHERE dataEntrada > " . $dataEntrada . " AND dataEntrada < " . $dataSaida .
+				 " OR dataEntrada < " . $dataEntrada . " AND dataSaida > " . $dataSaida .
+				 " OR dataSaida > " . $dataEntrada . " AND dataSaida < " . $dataSaida;
 
+		
 		try {
 			$resultRows = $this->db->query($sql);
 
@@ -87,15 +92,19 @@ class HotelFactory extends AbstractFactory {
 				throw new Exception("Tem erro no seu SQL!<br> '" . $sql . "'");
 			}
 
-			$resultObject = $this->queryRowsToListOfObjects($resultRows, "dataSaida");
+			$r = $resultRows->fetchAll(PDO::FETCH_NUM);
+        	
+        	echo "CountDatas\n";
+			var_dump($r);
+			//$resultObject = $this->queryRowsToListOfObjects($resultRows, "Reserva");
 
 		} catch (Exception $exc) {
 
 			echo $exc->getMessage();
-			$resultObject = null;
+			$r= null;
 		}
 		
-		return $resultObject;
+		return $r;
 	}
 
 	/**

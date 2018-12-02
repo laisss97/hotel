@@ -24,13 +24,10 @@ Data: 11 /10 /2018
 	</section>
 
 	<div class="reserva">
+		<h2>ESCOLHA OS QUARTOS:</h2>
 
-    <h2>ESCOLHA SEU QUARTO:</h2>
-
-    <p> Colocar de novo as fotos dos quartos </p>
-
-    <form action="?funcao=escolherQuarto" method="post">
-	    <label>Quarto Simple:</label><br>
+    <form action="?funcao=verificaDisponibilidade" method="post">
+    	<label>Quarto Simple:</label><br>
 	    <input type="number" name="nQuartoSimple" required><br>
 
 		<label>Quarto Lux:</label><br>
@@ -42,10 +39,10 @@ Data: 11 /10 /2018
 	    <label>Quarto Lux Imperial:</label><br>
 	    <input type="number" name="nQuartoLuxImperial" required><br>
 
-
-	    <input type="submit" value="Salvar quarto" name = "quartoEnviado">
+	    <input type="submit" value="Disponibilidade" name = "quartosEnviado">
 
 	</form>
+   
   </div>
 
 			

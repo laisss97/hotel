@@ -25,16 +25,17 @@ Data: 11 /10 /2018
 
 	<div class="reserva">
 
-    <h2>ESCOLHA SUA DATA:</h2>
+    <h2>ESCOLHA A DATA:</h2>
 
-    <form action="?funcao=verificaDisponibilidade" method="post">
+    <form action="?funcao=recebeData" method="post">
+    	
 	    <label>CHECK IN:</label><br>
 	    <input type="date" name="dataEntrada" required><br>
 
 	    <label>CHECK OUT:</label><br>
-	    <input type="date" name="dataSaída" required><br> 
+	    <input type="date" name="dataSaida" required><br> 
 
-	    <input type="submit" value="Disponibilidade" name = "disponibilidadeEnviado">
+	    <input type="submit" value="Enviar" name = "datasEnviado">
 
 	</form>
   </div>

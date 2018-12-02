@@ -73,8 +73,8 @@ class Controle {
             $this->verificaDisponibilidade();
             break;
 
-            case "escolherQuarto":
-            $this->escolherQuarto();
+            case "recebeData":
+            $this->recebeData();
             break;
 
             default:
@@ -227,35 +227,94 @@ class Controle {
         }
     }  
 
-    public function verificaDisponibilidade() {
+    public function verificaDisponibilidade() {  // Escolher quarto antes da data?
+                                                // Escolher data e quarto? Sim!!!
+                                                // Escolher data e depois mostrar só os quartos
+                                                // disponíveis?
         
-        if (isset($_POST['disponibilidadeEnviado'])) 
+        if (isset($_POST['quartosEnviado'])) 
         {
-            $dataEntrada = $_POST['dataEntrada'];
-            $dataSaida = $_POST['dataSaida'];
-            
-            $sucesso = $this->manager->verificaDisponibilidade($dataEntrada);
+            $dataEntrada = $_SESSION['dataEntrada'];
+            $dataSaida = $_SESSION['dataEntrada'];
 
-            //salvar dataEntrada e dataSaida em sessão
+            $nQuartoSimple = $_POST['nQuartoSimple'];
+            $nQuartoLux = $_POST['nQuartoLux'];
+            $nQuartoLuxMaster = $_POST['nQuartoLuxMaster'];
+            $nQuartoLuxImperial = $_POST['nQuartoLuxImperial'];
 
-            echo "sucesso:\n";
-            var_dump($sucesso);
+          
+           // $sucesso = $this->manager->verificaDisponibilidade($dataEntrada, $dataSaida, 
+           //                                         $nQuartoSimple, $nQuartoLux, 
+        //                                        $nQuartoLuxMaster, $nQuartoLuxImperial);
 
-            require 'view/escolherQuarto.php';
-            // se der errado
-                // setar variavel flag
-               // require 'view/reservas.php'
+            if($nQuartoSimple > 0){
+                $nameOfQuarto = "nQuartoSimple";
+                $sucesso1 = $this->manager->verificaDisponibilidade($dataEntrada, 
+                                                            $dataSaida, $nQuartoSimple, 
+                                                           $nameOfQuarto);
+            }
+            else
+                $sucesso1 = true;
+
+            if($nQuartoLux > 0){
+                $nameOfQuarto = "nQuartoLux";
+                $sucesso2 = $this->manager->verificaDisponibilidade($dataEntrada, 
+                                                            $dataSaida, $nQuartoLux,
+                                                            $nameOfQuarto);
+            }
+            else
+                $sucesso2 = true;
+
+            if($nQuartoLuxMaster > 0){
+                $nameOfQuarto = "nQuartoLuxMaster";
+                $sucesso3 = $this->manager->verificaDisponibilidade($dataEntrada, 
+                                                            $dataSaida, $nQuartoLuxMaster,
+                                                            $nameOfQuarto);
+            }
+            else
+                $sucesso3 = true;
+
+            if($nQuartoLuxImperial > 0){
+                $nameOfQuarto = "nQuartoLuxImperial";
+                $sucesso4 = $this->manager->verificaDisponibilidade($dataEntrada, 
+                                                        $dataSaida, $nQuartoLuxImperial,
+                                                        $nameOfQuarto);
+            }
+            else
+                $sucesso4 = true;
+
+
+            if ($sucesso1 and $sucesso2 and $sucesso3 and $sucesso4)
+            {
+                //prosseguir com a reserva
+                //$_SESSION['dataEntrada'] = $dataEntrada;
+                //$_SESSION['dataSaida'] = $dataSaida;
+                // Precisa salvar quartos em sessão?
+                //Sim!
+                require 'view/pagamento.php';
+            }
+            else
+            {
+                // detalhar mais...
+                $msg = "Não temos reserva disponível para este quarto na data solicitada.";
+                $flag = 1;
+                require 'view/reservas.php';
+            }   
         }
     }
 
-    public function escolherQuarto() {
+    public function recebeData() {
         
-        if (isset($_POST['quartoEnviado'])) 
+        if (isset($_POST['datasEnviado'])) 
         {           
-            // bla bla bla
-            require 'view/pagamento.php';           
+            $_SESSION['dataEntrada'] = $_POST['dataEntrada'];
+            $_SESSION['dataSaida']= $_POST['dataSaida'];
+            require 'view/escolherQuarto.php';           
         }
-    }  
+        else
+            require 'view/reservas.php';
+    }
+      
 }
 /*
 

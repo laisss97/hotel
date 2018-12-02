@@ -24,7 +24,7 @@ abstract class AbstractFactory {
     abstract public function salvar($obj);
     abstract public function buscarPorEmail($param): array;
     abstract public function atualizar($obj); 
-    abstract public function buscaReservas();
+    abstract public function countDatas(String $dataEntrada, String $dataSaida, String $quarto): array;
     
     /**
     * Lista os objetos persistidos no banco, que possuem o $email.

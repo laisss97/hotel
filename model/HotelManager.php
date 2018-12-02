@@ -1,6 +1,8 @@
  <?php
 
+
 require_once("model/Hospede.php");
+require_once("model/Reserva.php");
 require_once("model/HotelFactory.php");
 
 class HotelManager {
@@ -116,15 +118,27 @@ class HotelManager {
         
     }
 
-    public function verificaDisponibilidade(String $dataEntrada){
+    public function verificaDisponibilidade(String $dataEntrada, 
+                                            String $dataSaida, 
+                                            String $quarto,
+                                            String $nameOfQuarto){  
 
-        echo "Reserva manager\n";
-        
-        $reservas = $this->factory->buscaReservas();
+        $result = $this->factory->countDatas($dataEntrada, $dataSaida, $quarto); // aqui fiquei perdida
+        echo "Hotel Manager\n";
+        //var_dump($result[0][0]);
+       // var_dump($quarto);
 
-        var_dump($reservas);
+        //var_dump($_SESSION[$quarto]);
 
-        return true;
+        if ($result[0][0] < $_SESSION[$nameOfQuarto]){
+            $sucesso = true;
+            echo "Disponibilidade ok!\n";
+        }
+        else{
+            $sucesso = false;
+        }
+
+        return $sucesso;
 
         // verifica se $dataEntrada está dentro do intervalo das datas, 
         // quantas vezes está e se essa quantidade ultrapassa a quantidade
