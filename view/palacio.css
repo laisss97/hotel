@@ -1,4 +1,4 @@
-/*Tela principal*/
+/*Tela principal*******************************************************************************/
 header {
     border: 10px solid #8B795E;
     padding-top: 10px;
@@ -63,7 +63,7 @@ form{
     border-collapse: collapse;
 }
 
-/* Estilo geral do formulário (usado em login e cadastro)*/
+/* Estilo geral do formulário (usado em login e cadastro)***************************************/
 input[type=E-mail], input[type=password], select {
     width: 450px;
     padding: 4px 10px;
@@ -89,7 +89,7 @@ input[type=submit]{
 
 }
 
-/*Tela de Login*/
+/*Tela de Login*******************************************************************************/
 a.botao {
     color: red;
     font-size: 20px;
@@ -114,7 +114,7 @@ div.login form{
     box-sizing: border-box;
 }
 
-/*Tela de Serviços*/
+/*Tela de Serviços****************************************************************************/
 div.servicos {
     background-color: #CDB38B;
     padding: 65px;
@@ -129,7 +129,7 @@ div.servicos img {
     height: 60%;
 }
 
-/*Tela dos Quartos*/
+/*Tela dos Quartos****************************************************************************/
 div.quartos {
     background-color: #CDB38B;
     padding: 65px;
@@ -144,7 +144,7 @@ div.quartos img {
     height: 60%;
 }
 
-/*Estilo geral da descrição (usado em serviços e quartos)*/
+/*Estilo geral da descrição (usado em serviços e quartos)*************************************/
 
 div.descricao {
     font-size: 20px;
@@ -154,7 +154,7 @@ div.descricao {
     height: 200px;
 }
 
-/*Tela de cadastro*/
+/*Tela de cadastro****************************************************************************/
 div.cadastro {
     background-color: #CDB38B;
     padding: 65px;
@@ -201,7 +201,7 @@ div.cadastro input{
     box-sizing: border-box;
 }
 
-/*Tela de Reservas*/
+/*Tela de Reservas*****************************************************************************/
 div.reserva {
     background-color: #CDB38B;
     padding: 65px;
@@ -210,7 +210,7 @@ div.reserva {
     
     
 }
-/*Tela de Pagamento*/
+/*Tela de Pagamento****************************************************************************/
 
 div.pagamento {
     background-color: #CDB38B;
@@ -257,3 +257,35 @@ div.pagamento input[type=submit]{
 div.pagamento input[type=radio]{
     cursor: pointer;
 }
+
+/*Galeria da tela inicial**********************************************************************/
+div.gallery {
+    margin: 5px;
+    border: 3px solid #ccc;    
+    display: inline-block;
+    width: 20%;
+    height: 30%;
+    
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    position: relative;
+    float: left;
+    width:  100px;
+    height: 100px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+
+    border-radius: 50%;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+/******************************************************************************************/
