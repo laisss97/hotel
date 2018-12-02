@@ -40,6 +40,9 @@ Data: 11 /10 /2018
 	</form>
   </div>
 
-	<?php // if variavel flag esta setada escrever: Esta data não está disponivel ?>		
+	<?php 
+		if(isset($flag) and $flag == 1)
+			$_SESSION['msg_data'];
+	?>		
 </body>
 </html>

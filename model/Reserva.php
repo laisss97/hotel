@@ -3,7 +3,6 @@
 class Reserva {
 
     private  $id;
-
     private  $emailHospede;
 
 	private  $dataEntrada;
@@ -15,20 +14,37 @@ class Reserva {
     private  $nQuartoLuxImperial;
 
     //pagamento
+    private $cartao;
+    private $numCartao;
+    private $nomeCartao;
+    private $validade;
+    private $codSeguranca;
+    private $parcelas;
 
 
     public function __construct(string $id="", string $emailHospede, string $dataEntrada, 
                                 string $dataSaida, string $nQuartoSimple, string $nQuartoLux, 
-                                string $nQuartoLuxMaster, string $nQuartoLuxImperial) {
+                                string $nQuartoLuxMaster, string $nQuartoLuxImperial, 
+                                string $cartao, string $numCartao, string $nomeCartao,
+                                string $validade, string $codSeguranca, string $parcelas) {
 
         $this->id = $id;
         $this->emailHospede = $emailHospede;
+
 		$this->dataEntrada = $dataEntrada;
         $this->dataSaida = $dataSaida;
+
         $this->nQuartoSimple = $nQuartoSimple;
         $this->nQuartoLux = $nQuartoLux;
         $this->nQuartoLuxMaster = $nQuartoLuxMaster;
         $this->nQuartoLuxImperial = $nQuartoLuxImperial;
+
+        $this->cartao = $cartao;
+        $this->numCartao = $numCartao;
+        $this->nomeCartao = $nomeCartao;
+        $this->validade = $validade;
+        $this->codSeguranca = $codSeguranca;
+        $this->parcelas = $parcelas;
     }
 
     /**
@@ -39,11 +55,9 @@ class Reserva {
         return $this->id;
     }
 
-
     public function getEmailHospede(): string{
         return $this->emailHospede;
     } 
-
 
     public function getDataEntrada(): string{
         return $this->dataEntrada;
@@ -52,8 +66,6 @@ class Reserva {
     public function getDataSaida(): string{
         return $this->dataSaida;
     }
-
-
 
     public function getNQuartoSimple(): string{
         return $this->nQuartoSimple;
@@ -71,6 +83,29 @@ class Reserva {
         return $this->nQuartoLuxImperial;
     }
 
+    public function getCartao(): string{
+        return $this->cartao;
+    }    
+
+    public function getNumCartao(): string{
+        return $this->numCartao;
+    }    
+
+    public function getNomeCartao(): string{
+        return $this->nomeCartao;
+    }  
+
+    public function getValidade(): string{
+        return $this->validade;
+    }    
+
+    public function getCodSeguranca(): string{
+        return $this->codSeguranca;
+    }    
+
+    public function getParcelas(): string{
+        return $this->parcelas;
+    }    
 
     // set
     
@@ -102,6 +137,30 @@ class Reserva {
 
     public function setNQuartoLuxImperial(string $nQuartoLuxImperial) {
         $this->nQuartoLuxImperial = $nQuartoLuxImperial;
+    }
+
+    public function setCartao(string $cartao){
+        $this->cartao = $cartao;
+    }    
+
+    public function setNumCartao(string $numCartao){
+        $this->numCartao = $numCartao;
+    }    
+
+    public function setNomeCartao(string $nomeCartao){
+        $this->nomeCartao = $nomeCartao;
+    }  
+
+    public function setValidade(string $validade){
+        $this->validade = $validade;
+    }    
+
+    public function setCodSeguranca(string $codSeguranca){
+        $this->codSeguranca = $codSeguranca;
+    }    
+
+    public function setParcelas(string $parcelas){
+        $this->parcelas = $parcelas;
     }
     
 }

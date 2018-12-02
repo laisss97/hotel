@@ -118,20 +118,21 @@ class HotelManager {
         
     }
 
+    // verifica se $dataEntrada está dentro do intervalo das datas, 
+    // quantas vezes está e se essa quantidade ultrapassa a quantidade
+    // de quartos
+
     public function verificaDisponibilidade(String $dataEntrada, 
                                             String $dataSaida, 
                                             String $quarto,
                                             String $nameOfQuarto){  
 
-        $result = $this->factory->countDatas($dataEntrada, $dataSaida, $quarto); // aqui fiquei perdida
+        $result = $this->factory->countDatas($dataEntrada, $dataSaida, $nameOfQuarto); // aqui fiquei perdida
         echo "Hotel Manager\n";
-        //var_dump($result[0][0]);
-       // var_dump($quarto);
 
-        //var_dump($_SESSION[$quarto]);
-
-        if ($result[0][0] < $_SESSION[$nameOfQuarto]){
-            $sucesso = true;
+        if ($_SESSION[$nameOfQuarto] - $result[0][0] >= $quarto){
+            $sucesso = true; // não só isso, tem que ver se a quantidade de 
+                            // quartos que tem é suficiente
             echo "Disponibilidade ok!\n";
         }
         else{
@@ -139,11 +140,64 @@ class HotelManager {
         }
 
         return $sucesso;
+    }
 
-        // verifica se $dataEntrada está dentro do intervalo das datas, 
-        // quantas vezes está e se essa quantidade ultrapassa a quantidade
-        // de quartos
+    public function verificaQuartos($sucesso1, $sucesso2, $sucesso3, $sucesso4,
+                                    $nQuartoSimple, $nQuartoLux, $nQuartoLuxMaster,
+                                    $nQuartoLuxImperial, $dataEntrada, $dataSaida): int{
+        
+        if ($sucesso1)
+        {
+            $_SESSION['nQuartoSimple'] = $nQuartoSimple;
 
+            if($sucesso2)
+            {
+                $_SESSION['nQuartoLux'] = $nQuartoLux;
+
+                if($sucesso3)
+                {   
+                    $_SESSION['nQuartoLuxMaster'] = $nQuartoLuxMaster;
+
+                    if($sucesso4)
+                    {
+                        $_SESSION['nQuartoLuxImperial'] = $nQuartoLuxImperial;
+                        //require 'view/pagamento.php';
+                        $flag = 0;
+                    }
+                    else
+                    {
+                        $_SESSION['msg_data'] = "Não temos reserva disponível para o quarto lux imperial entre os dias ". 
+                        $dataEntrada . " e " . $dataSaida . ".";
+                        $flag = 1;
+                        //require 'view/reservas.php'; // verificar esta flag em reservas
+                    }
+                }
+                else
+                {
+                    $_SESSION['msg_data'] = "Não temos reserva disponível para o quarto lux master entre os dias ". 
+                     $dataEntrada . " e " . $dataSaida . ".";
+                    $flag = 1;
+                    //require 'view/reservas.php'; // verificar esta flag em reservas
+                }
+            }
+            else
+            {
+                $_SESSION['msg_data'] = "Não temos reserva disponível para o quarto lux entre os dias ". 
+                $dataEntrada . " e " . $dataSaida . ".";
+                $flag = 1;
+                //require 'view/reservas.php'; // verificar esta flag em reservas
+            }                 
+        }
+        else
+        {
+            // detalhar mais...
+            $_SESSION['msg_data'] = "Não temos reserva disponível para o quarto simplex entre os dias ". 
+            $dataEntrada . " e " . $dataSaida . ".";
+            $flag = 1;
+            //require 'view/reservas.php'; // verificar esta flag em reservas
+        } 
+
+        return $flag;  
     }
 
     public function busca(string $email): array{

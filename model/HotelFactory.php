@@ -76,10 +76,10 @@ class HotelFactory extends AbstractFactory {
 		return $resultObject;
 	}
 
-	public function countDatas(String $dataEntrada, String $dataSaida, String $quarto): array{
+	public function countDatas(String $dataEntrada, String $dataSaida, String $nameOfQuarto): array{
 
 		//$sql = "SELECT * FROM tbreserva"; // Escrever SQL
-		$sql = "SELECT COUNT(" . $quarto . ") FROM tbreserva " .
+		$sql = "SELECT COUNT(" . $nameOfQuarto . ") FROM tbreserva " .
 		"WHERE dataEntrada > " . $dataEntrada . " AND dataEntrada < " . $dataSaida .
 				 " OR dataEntrada < " . $dataEntrada . " AND dataSaida > " . $dataSaida .
 				 " OR dataSaida > " . $dataEntrada . " AND dataSaida < " . $dataSaida;

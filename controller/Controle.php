@@ -77,6 +77,10 @@ class Controle {
             $this->recebeData();
             break;
 
+            case "processaPagamento":
+            $this->processaPagamento();
+            break;
+
             default:
             $this->home();
             break;
@@ -242,11 +246,6 @@ class Controle {
             $nQuartoLuxMaster = $_POST['nQuartoLuxMaster'];
             $nQuartoLuxImperial = $_POST['nQuartoLuxImperial'];
 
-          
-           // $sucesso = $this->manager->verificaDisponibilidade($dataEntrada, $dataSaida, 
-           //                                         $nQuartoSimple, $nQuartoLux, 
-        //                                        $nQuartoLuxMaster, $nQuartoLuxImperial);
-
             if($nQuartoSimple > 0){
                 $nameOfQuarto = "nQuartoSimple";
                 $sucesso1 = $this->manager->verificaDisponibilidade($dataEntrada, 
@@ -283,23 +282,14 @@ class Controle {
             else
                 $sucesso4 = true;
 
+            $flag = $this->manager->verificaQuartos($sucesso1, $sucesso2, $sucesso3, $sucesso4,
+                                    $nQuartoSimple, $nQuartoLux, $nQuartoLuxMaster,
+                                    $nQuartoLuxImperial, $dataEntrada, $dataSaida);
 
-            if ($sucesso1 and $sucesso2 and $sucesso3 and $sucesso4)
-            {
-                //prosseguir com a reserva
-                //$_SESSION['dataEntrada'] = $dataEntrada;
-                //$_SESSION['dataSaida'] = $dataSaida;
-                // Precisa salvar quartos em sessão?
-                //Sim!
-                require 'view/pagamento.php';
-            }
+            if($flag == 1)
+                require "view/reservas.php";
             else
-            {
-                // detalhar mais...
-                $msg = "Não temos reserva disponível para este quarto na data solicitada.";
-                $flag = 1;
-                require 'view/reservas.php';
-            }   
+                require "view/pagamento.php";
         }
     }
 
@@ -313,6 +303,13 @@ class Controle {
         }
         else
             require 'view/reservas.php';
+    }
+
+    public function processaPagamento(){
+        if (isset($_POST['pagamentoEnviado'])) 
+        {           
+            echo "ok\n";
+        }
     }
       
 }
