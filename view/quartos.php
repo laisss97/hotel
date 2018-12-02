@@ -18,32 +18,33 @@ Data: 11 /10 /2018
 	</header>
 	
 	<section>
-		<?php
-		
-		if(!isset($_SESSION['sucesso']) || $_SESSION['sucesso'] == 0) {
+		<nav>
+			<?php
 			
-			echo "<nav>"; 
-				echo "<a href=\"?funcao=home\">Início</a>";
-				echo "<a href=\"?funcao=login\">Login</a>";
-				echo "<a href=\"?funcao=cadastro\">Cadastro</a>";
-				echo "<a href=\"?funcao=quartos\">Quartos</a>";
-				echo "<a href=\"?funcao=servicos\">Serviços</a>";
-			echo "</nav>";
-		}
-		else
-		{
-			echo "<nav>";
-				echo "<a href=\"?funcao=homeLogin\">Início</a>";
-				echo "<a href=\"?funcao=alterarCadastro\">Alterar cadastro</a>";
-				echo "<a href=\"?funcao=reservar\">Reservar</a>";
-				echo "<a href=\"?funcao=cancelarReserva\">Cancelar reserva</a>";
-				echo "<a href=\"?funcao=quartos\">Quartos</a>";
-				echo "<a href=\"?funcao=servicos\">Serviços</a>";
-				echo "<a href=\"?funcao=sairLogin\">Sair</a>";
-			echo "</nav>";
-		}
-
-		?>
+			if(!isset($_SESSION['sucesso']) || $_SESSION['sucesso'] == 0) {
+				
+				echo "<nav>"; 
+					echo "<a href=\"?funcao=home\">Início</a>";
+					echo "<a href=\"?funcao=login\">Login</a>";
+					echo "<a href=\"?funcao=cadastro\">Cadastro</a>";
+					echo "<a href=\"?funcao=quartos\">Quartos</a>";
+					echo "<a href=\"?funcao=servicos\">Serviços</a>";
+				echo "</nav>";
+			}
+			else
+			{
+				echo "<nav>";
+					echo "<a href=\"?funcao=homeLogin\">Início</a>";
+					echo "<a href=\"?funcao=alterarCadastro\">Alterar cadastro</a>";
+					echo "<a href=\"?funcao=reservar\">Reservar</a>";
+					echo "<a href=\"?funcao=cancelarReserva\">Cancelar reserva</a>";
+					echo "<a href=\"?funcao=quartos\">Quartos</a>";
+					echo "<a href=\"?funcao=servicos\">Serviços</a>";
+					echo "<a href=\"?funcao=sairLogin\">Sair</a>";
+				echo "</nav>";
+			}
+			?>
+		</nav>
 	</section>
 
 	<div class="quartos">
