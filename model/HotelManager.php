@@ -148,19 +148,19 @@ class HotelManager {
         
         if ($sucesso1)
         {
-            $_SESSION['nQuartoSimple'] = $nQuartoSimple;
+            $_SESSION['nQuartoSimple_h'] = $nQuartoSimple;
 
             if($sucesso2)
             {
-                $_SESSION['nQuartoLux'] = $nQuartoLux;
+                $_SESSION['nQuartoLux_h'] = $nQuartoLux;
 
                 if($sucesso3)
                 {   
-                    $_SESSION['nQuartoLuxMaster'] = $nQuartoLuxMaster;
+                    $_SESSION['nQuartoLuxMaster_h'] = $nQuartoLuxMaster;
 
                     if($sucesso4)
                     {
-                        $_SESSION['nQuartoLuxImperial'] = $nQuartoLuxImperial;
+                        $_SESSION['nQuartoLuxImperial_h'] = $nQuartoLuxImperial;
                         //require 'view/pagamento.php';
                         $flag = 0;
                     }
@@ -198,6 +198,60 @@ class HotelManager {
         } 
 
         return $flag;  
+    }
+
+    public function salvarReserva(){
+        /*
+        $reserva = new Reserva("", colocar as sessões aqui);
+        $sucesso = $this->factory->salvarReserva($reserva);
+
+        if(isset($sucesso))*/
+            $msg = "Obrigada " . $_SESSION["nomeHospede"] . "! Seu cadastro no Hotel Palácios foi efetuado com sucesso!";
+       /* else
+            $msg = "Erro ao cadastrar no banco de dados.";
+*/
+        return $msg;
+
+    }
+
+    public function limparSessao(){
+
+        if(isset($_SESSION['dataEntrada']))
+            unset($_SESSION['dataEntrada']);
+
+        if(isset($_SESSION['dataSaida']))
+            unset($_SESSION['dataSaida']);
+
+        if(isset($_SESSION['$nQuartoSimple']))
+            unset($_SESSION['$nQuartoSimple']);
+
+        if(isset($_SESSION['$nQuartoLux']))
+            unset($_SESSION['$nQuartoLux']);
+
+        if(isset($_SESSION['$nQuartoLuxMaster']))
+            unset($_SESSION['$nQuartoLuxMaster']);
+
+        if(isset($_SESSION['$nQuartoLuxImperial']))
+            unset($_SESSION['$nQuartoLuxImperial']);
+
+        if(isset($_SESSION['cartao']))
+            unset($_SESSION['cartao']);
+
+        if(isset($_SESSION['numCartao']))
+            unset($_SESSION['numCartao']);
+
+        if(isset($_SESSION['nomeCartao']))
+            unset($_SESSION['nomeCartao']);
+
+        if(isset($_SESSION['validade']))
+            unset($_SESSION['validade']);
+
+        if(isset($_SESSION['codSeguranca']))
+            unset($_SESSION['codSeguranca']);
+
+        if(isset($_SESSION['parcelas']))
+            unset($_SESSION['parcelas']);
+
     }
 
     public function busca(string $email): array{

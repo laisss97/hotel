@@ -81,6 +81,14 @@ class Controle {
             $this->processaPagamento();
             break;
 
+            case "confirmaReserva":
+            $this->confirmaReserva();
+            break;
+
+            case "cancelaReserva":
+            $this->cancelaReserva();
+            break;
+
             default:
             $this->home();
             break;
@@ -239,7 +247,7 @@ class Controle {
         if (isset($_POST['quartosEnviado'])) 
         {
             $dataEntrada = $_SESSION['dataEntrada'];
-            $dataSaida = $_SESSION['dataEntrada'];
+            $dataSaida = $_SESSION['dataSaida'];
 
             $nQuartoSimple = $_POST['nQuartoSimple'];
             $nQuartoLux = $_POST['nQuartoLux'];
@@ -307,11 +315,34 @@ class Controle {
 
     public function processaPagamento(){
         if (isset($_POST['pagamentoEnviado'])) 
-        {           
-            echo "ok\n";
+        {               
+            $_SESSION['cartao'] = $_POST['cartao'];
+            $_SESSION['numCartao'] = $_POST['numCartao'];
+            $_SESSION['nomeCartao'] = $_POST['nomeCartao'];
+            $_SESSION['validade'] = $_POST['validade'];
+            $_SESSION['codSeguranca'] = $_POST['codSeguranca'];
+            $_SESSION['parcelas'] = $_POST['parcelas'];
+
+            require "view/finalizaReserva.php"; // nesta page exibir todos os dados, preço, dar opção de cancelar e de finalizar, 
+            // após finalizar, criar função que salva no BD todos os dados em sessão e depois libera
         }
     }
+
+    public function confirmaReserva(){
+
+        $msg = $this->manager->salvarReserva();
+
+        $this->manager->limparSessao();
+
+        require "view/mensagemConfirmaReserva.php";
+    }
       
+    public function cancelaReserva(){
+
+        $this->manager->limparSessao();
+        require "view/mensagemCancelaReserva.php";
+    }
+    
 }
 /*
 

@@ -48,6 +48,45 @@ class HotelFactory extends AbstractFactory {
             return $result;
     }
 
+    public function salvarReserva($obj) {
+    	
+        $novaReserva = $obj;   //arrumar
+
+        
+		try {
+		        $data = [ 'nome' => $novoHospede->getNome(), 
+		                  'email' => $novoHospede->getEmail(),
+		                  'telefone' => $novoHospede->getTelefone(),
+						  'dataNascimento' => $novoHospede->getDataNascimento(),
+						  'cpf' => $novoHospede->getCpf(),
+						  'rua' => $novoHospede->getRua(),
+						  'numeroCasa' => $novoHospede->getNumeroCasa(),
+						  'bairro' => $novoHospede->getBairro(),
+						  'cep' => $novoHospede->getCep(),
+					      'senha' => $novoHospede->getSenha(),];
+
+				$sql = "INSERT INTO tbhospede (nome, email, telefone, dataNascimento, cpf,
+                                                rua, numeroCasa, bairro, cep, senha) VALUES 
+											  (:nome, :email, :telefone, :dataNascimento, :cpf,
+                                               :rua, :numeroCasa, :bairro, :cep, :senha)";
+
+				$stmt= $this->db->prepare($sql);
+				$stmt->execute($data);
+
+                if ($stmt) {
+                    $result = true;
+                } else {
+                    $result = false;
+             	}
+            }
+        catch(PDOException $e) {
+  				echo 'Error: ' . $e->getMessage();
+  			}	
+          
+            return $result;
+    }
+
+
     /**
 	* Lista os objetos persistidos no banco, que possuem o $email.
 	* @param string $email - email a ser buscado.
