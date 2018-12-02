@@ -52,12 +52,12 @@ Data: 11 /10 /2018
 
 		<img src="https://media-cdn.tripadvisor.com/media/photo-s/0a/63/9c/f4/recepcao.jpg" class="img-rounded" width="500" height="450" alt="recepcao">
 		<div class="descricao">
-			O hóspede ao chegar no Hotel Palácios encontrará um ambiante de requinte e acolhedor.
+			O hóspede ao chegar no Hotel Palácios encontrará um ambiente de requinte e acolhedor.
 			</div>
 
 		<img src="http://blog.hospedin.com/wp-content/uploads/2016/02/A-importancia-da-equipe-do-hotel-na-satisfacao-do-cliente.jpg" class="img-rounded" width="500" height="450" alt="funcionarios recepção">
 		<div class="descricao">
-			Nosso funcionários são altamente capacitados para prestar o melgor atendimento.
+			Nosso funcionários são altamente capacitados para prestar o melhor atendimento.
 		</div>
 
 		<img src="https://i.ytimg.com/vi/amlyljz0CE8/maxresdefault.jpg" class="img-rounded" width="500" height="450" alt="camareira">
@@ -78,14 +78,14 @@ Data: 11 /10 /2018
 
 		<img src="http://www.hotelestanciaatibainha.com.br/images/lazer/piscinas/coberta-infantil-2.jpg" class="img-rounded" width="500" height="450" alt="piscina">
 		<div class="descricao">
-			Nossa piscina está disponível durante 24horas, contando com slava-vidas em tempo integral e aquecimento.
+			Nossa piscina está disponível durante 24horas, contando com salva-vidas em tempo integral e aquecimento.
 		</div>
 
 		<img src="http://www.hotelunique.com.br/images/034_hotel%20unique_%20spa%20room.jpg?crc=319208505" class="img-rounded" width="500" height="450" alt="spa">
 		<div class="descricao">Possuímos um spa com profisionais para ajudar no relaxamento dos hóspedes.</div>
 
 		<img src="https://www.hoteleselba.com/sites/default/files/styles/hotel_media/public/media_3_8.jpg?itok=P4tkZG2w" class="img-rounded" width="500" height="450" alt="piscina spa">
-		<div class="descricao">Depois de uma sessão relazante no spa o hóspede é convidado a dar uma megulho em nossa piscina aquecida interna.</div>
+		<div class="descricao">Depois de uma sessão relaxante no spa o hóspede é convidado a dar uma mergulho em nossa piscina aquecida interna.</div>
 
 		<img src="http://www.sw-hotelguide.com/portugal/bussaco/palace-hotel-bussaco/images/stories/rotators/restaurants/restaurants_03.jpg" class="img-rounded" width="500" height="450" alt="salão de festas">
 		<div class="descricao">O Salão Gold é o ambiente perfeito para grandes celebrações.</div>
