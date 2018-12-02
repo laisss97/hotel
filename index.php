@@ -5,6 +5,12 @@
 
 require_once 'controller/Controle.php';
 
+session_start();
+$_SESSION['nQuartoSimple'] = 3;
+$_SESSION['nQuartoLux'] = 3;
+$_SESSION['nQuartoLuxMaster'] = 3;
+$_SESSION['nQuartoLuxImperial'] = 3;
+
 $controller = new Controle();
 
 $controller->init();
