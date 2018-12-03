@@ -27,10 +27,7 @@ class HotelFactory extends AbstractFactory {
 						  'cep' => $novoHospede->getCep(),
 					      'senha' => $novoHospede->getSenha(),];
 
-				$sql = "INSERT INTO tbhospede (nome, email, telefone, dataNascimento, cpf,
-                                                rua, numeroCasa, bairro, cep, senha) VALUES 
-											  (:nome, :email, :telefone, :dataNascimento, :cpf,
-                                               :rua, :numeroCasa, :bairro, :cep, :senha)";
+				$sql = "INSERT INTO tbhospede (nome, email, telefone, dataNascimento, cpf, rua, numeroCasa, bairro, cep, senha) VALUES :nome, :email, :telefone, :dataNascimento, :cpf, :rua, :numeroCasa, :bairro, :cep, :senha)";
 
 				$stmt= $this->db->prepare($sql);
 				$stmt->execute($data);
@@ -52,23 +49,24 @@ class HotelFactory extends AbstractFactory {
     	
         $novaReserva = $obj;   //arrumar
 
-        
-		try {
-		        $data = [ 'nome' => $novoHospede->getNome(), 
-		                  'email' => $novoHospede->getEmail(),
-		                  'telefone' => $novoHospede->getTelefone(),
-						  'dataNascimento' => $novoHospede->getDataNascimento(),
-						  'cpf' => $novoHospede->getCpf(),
-						  'rua' => $novoHospede->getRua(),
-						  'numeroCasa' => $novoHospede->getNumeroCasa(),
-						  'bairro' => $novoHospede->getBairro(),
-						  'cep' => $novoHospede->getCep(),
-					      'senha' => $novoHospede->getSenha(),];
+        var_dump($novaReserva);
 
-				$sql = "INSERT INTO tbhospede (nome, email, telefone, dataNascimento, cpf,
-                                                rua, numeroCasa, bairro, cep, senha) VALUES 
-											  (:nome, :email, :telefone, :dataNascimento, :cpf,
-                                               :rua, :numeroCasa, :bairro, :cep, :senha)";
+		try {
+		        $data = [ 'emailHospede' => $novaReserva->getEmailHospede(),
+		    			  'dataEntrada' => $novaReserva->getDataEntrada(),
+		    			  'dataSaida' => $novaReserva->getDataSaida(),
+		    			  'nQuartoSimple' => $novaReserva->getNQuartoSimple(),
+		    			  'nQuartoLux' => $novaReserva->getNQuartoLux(),
+		    			  'nQuartoLuxMaster' => $novaReserva->getNQuartoLuxMaster(),
+		    			  'nQuartoLuxImperial' => $novaReserva->getNQuartoLuxImperial(),
+		    			  'cartao' => $novaReserva->getCartao(),
+		    			  'numCartao' => $novaReserva->getNumCartao(),
+		    			  'nomeCartao' => $novaReserva->getNomeCartao(),
+		    			  'validade' => $novaReserva->getValidade(),
+		    			  'codSeguranca' => $novaReserva->getCodSeguranca(),
+		    			  'parcelas' => $novaReserva->getParcelas(),];
+
+				$sql = "INSERT INTO tbreserva (emailHospede, dataEntrada, dataSaida, nQuartoSimple, nQuartoLux, nQuartoLuxMaster, nQuartoLuxImperial, cartao, numCartao, nomeCartao, validade, codSeguranca, parcelas) VALUES(:emailHospede, :dataEntrada, :dataSaida, :nQuartoSimple, :nQuartoLux, :nQuartoLuxMaster, :nQuartoLuxImperial, :cartao, :numCartao, :nomeCartao, :validade, :codSeguranca, :parcelas)";
 
 				$stmt= $this->db->prepare($sql);
 				$stmt->execute($data);

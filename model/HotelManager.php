@@ -201,15 +201,18 @@ class HotelManager {
     }
 
     public function salvarReserva(){
-        /*
-        $reserva = new Reserva("", colocar as sessões aqui);
+        
+        $reserva = new Reserva("", $_SESSION['emailHospede'], $_SESSION['dataEntrada'], 
+            $_SESSION['dataSaida'], $_SESSION['nQuartoSimple'], $_SESSION['nQuartoLux'], 
+            $_SESSION['nQuartoLuxMaster'], $_SESSION['nQuartoLuxImperial'], $_SESSION['cartao'], $_SESSION['numCartao'], $_SESSION['nomeCartao'], $_SESSION['validade'], $_SESSION['codSeguranca'], $_SESSION['parcelas']);
+
         $sucesso = $this->factory->salvarReserva($reserva);
 
-        if(isset($sucesso))*/
-            $msg = "Obrigada " . $_SESSION["nomeHospede"] . "! Seu cadastro no Hotel Palácios foi efetuado com sucesso!";
-       /* else
-            $msg = "Erro ao cadastrar no banco de dados.";
-*/
+        if(isset($sucesso))
+            $msg = "Obrigada " . $_SESSION["nomeHospede"] . "! Sua reserva no Hotel Palácios foi efetuada com sucesso!";
+        else
+            $msg = "Erro ao cadastrar sua reserva no banco de dados.";
+
         return $msg;
 
     }

@@ -19,7 +19,7 @@ Data: 11 /10 /2018
 
 	<section>
 		<nav>
-			<a href="?funcao=homeLogin">Início</a>
+			<a href="?funcao=cancelaReserva">Início</a>
 		</nav>
 	</section>
 
