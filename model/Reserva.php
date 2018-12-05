@@ -1,5 +1,21 @@
 <?php
 
+/*
+* Trabalho realizado para a disciplina de Programação para Web da Faculdade de
+* Computação da Universidade Federal de Mato Grosso do Sul (FACOM / UFMS).
+* Trata-se de um sistema de reservas de um hotel específico.
+*
+*
+*
+* Classe Reserva - Classe que trata os dados de reserva do hóspede
+*
+* @author Isadora Ajala Martinez
+* @author Laís Santos de Souza
+*
+*
+* @version 6.0 - 05/Dez/2018
+*/
+
 class Reserva {
 
     private  $id;

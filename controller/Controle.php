@@ -9,7 +9,7 @@ require_once("model/HotelManager.php");
 *
 *
 *
-* Classe Controle - controla e gerencia do fluxo da aplicação.
+* Classe Controle - Classe que controla e gerencia do fluxo da aplicação.
 * Essa classe segue o padrão arquitetural MVC, no qual assume o papel de
 * controller.
 *

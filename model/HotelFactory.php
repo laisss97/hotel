@@ -4,6 +4,23 @@ require_once("Hospede.php");
 require_once("Reserva.php");
 require_once("AbstractFactory.php");
 
+/*
+* Trabalho realizado para a disciplina de Programação para Web da Faculdade de
+* Computação da Universidade Federal de Mato Grosso do Sul (FACOM / UFMS).
+* Trata-se de um sistema de reservas de um hotel específico.
+*
+*
+*
+* Classe HotelFactory - Classe que implementa a classe AbstractFactory. 
+* Responsável por conectar com o banco de dados.
+*
+* @author Isadora Ajala Martinez
+* @author Laís Santos de Souza
+*
+*
+* @version 6.0 - 05/Dez/2018
+*/
+
 class HotelFactory extends AbstractFactory {
 
     public function __construct() {
@@ -47,54 +64,44 @@ class HotelFactory extends AbstractFactory {
     }
 
     public function salvarReserva($obj) {
-    		$novaReserva = $obj; 
+		$novaReserva = $obj; 
 
-			try {
-		        $data = [ 'emailHospede' => $novaReserva->getEmailHospede(),
-		    			  'dataEntrada' => $novaReserva->getDataEntrada(),
-		    			  'dataSaida' => $novaReserva->getDataSaida(),
-		    			  'nQuartoSimple' => $novaReserva->getNQuartoSimple(),
-		    			  'nQuartoLux' => $novaReserva->getNQuartoLux(),
-		    			  'nQuartoLuxMaster' => $novaReserva->getNQuartoLuxMaster(),
-		    			  'nQuartoLuxImperial' => $novaReserva->getNQuartoLuxImperial(),
-		    			  'cartao' => $novaReserva->getCartao(),
-		    			  'numCartao' => $novaReserva->getNumCartao(),
-		    			  'nomeCartao' => $novaReserva->getNomeCartao(),
-		    			  'validade' => $novaReserva->getValidade(),
-		    			  'codSeguranca' => $novaReserva->getCodSeguranca(),
-		    			  'parcelas' => $novaReserva->getParcelas(),];
+		try {
+	        $data = [ 'emailHospede' => $novaReserva->getEmailHospede(),
+	    			  'dataEntrada' => $novaReserva->getDataEntrada(),
+	    			  'dataSaida' => $novaReserva->getDataSaida(),
+	    			  'nQuartoSimple' => $novaReserva->getNQuartoSimple(),
+	    			  'nQuartoLux' => $novaReserva->getNQuartoLux(),
+	    			  'nQuartoLuxMaster' => $novaReserva->getNQuartoLuxMaster(),
+	    			  'nQuartoLuxImperial' => $novaReserva->getNQuartoLuxImperial(),
+	    			  'cartao' => $novaReserva->getCartao(),
+	    			  'numCartao' => $novaReserva->getNumCartao(),
+	    			  'nomeCartao' => $novaReserva->getNomeCartao(),
+	    			  'validade' => $novaReserva->getValidade(),
+	    			  'codSeguranca' => $novaReserva->getCodSeguranca(),
+	    			  'parcelas' => $novaReserva->getParcelas(),];
 
-				$sql = "INSERT INTO tbreserva (emailHospede, dataEntrada, dataSaida, nQuartoSimple, nQuartoLux, nQuartoLuxMaster, nQuartoLuxImperial, cartao, numCartao, nomeCartao, validade, codSeguranca, parcelas) VALUES(:emailHospede, :dataEntrada, :dataSaida, :nQuartoSimple, :nQuartoLux, :nQuartoLuxMaster, :nQuartoLuxImperial, :cartao, :numCartao, :nomeCartao, :validade, :codSeguranca, :parcelas)";
+			$sql = "INSERT INTO tbreserva (emailHospede, dataEntrada, dataSaida, nQuartoSimple, nQuartoLux, nQuartoLuxMaster, nQuartoLuxImperial, cartao, numCartao, nomeCartao, validade, codSeguranca, parcelas) VALUES(:emailHospede, :dataEntrada, :dataSaida, :nQuartoSimple, :nQuartoLux, :nQuartoLuxMaster, :nQuartoLuxImperial, :cartao, :numCartao, :nomeCartao, :validade, :codSeguranca, :parcelas)";
 
-				$stmt= $this->db->prepare($sql);
-				$stmt->execute($data);
+			$stmt= $this->db->prepare($sql);
+			$stmt->execute($data);
 
-                if ($stmt) {
-                    $result = true;
-                } else {
-                    $result = false;
-             	}
-            }
-        catch(PDOException $e) {
-  				echo 'Error: ' . $e->getMessage();
-  			}	
-          
-            return $result;
-    }
-
-
-    /**
-	* Lista os objetos persistidos no banco, que possuem o $email.
-	* @param string $email - email a ser buscado.
-	* @return  array -  Array de objetos da classe, ou null se não encontrar
-	* objetos.
-	*/
+            if ($stmt) {
+                $result = true;
+            } else {
+                $result = false;
+         	}
+        }
+	    catch(PDOException $e) {
+					echo 'Error: ' . $e->getMessage();
+				}	
+	      
+	        return $result;
+	}
 	
-	public function buscarPorEmail($param): array { // tem que ajustar
+	public function buscarPorEmail($param): array { 
 
 		$sql = "SELECT * FROM tbhospede WHERE email='" . $param . "'";
-
-		var_dump($sql);
 
 		try {
 			$resultRows = $this->db->query($sql);
@@ -117,7 +124,6 @@ class HotelFactory extends AbstractFactory {
 	public function buscarReservaPorEmail($param): array{
 
 		$sql = "SELECT * FROM tbreserva WHERE emailHospede ='" . $param . "'";
-
 
 		try {
 			$resultRows = $this->db->query($sql);
@@ -176,7 +182,6 @@ class HotelFactory extends AbstractFactory {
 					  "codSeguranca = '" . $reserva->getCodSeguranca() . "' AND " .
 					  "parcelas = '" . $reserva->getParcelas() . "'";
 
-		var_dump($sql);
 		$resultRows = $this->db->query($sql);
 
 		if (!($resultRows instanceof PDOStatement)) {
@@ -184,8 +189,6 @@ class HotelFactory extends AbstractFactory {
 		}
 
 		$r = $resultRows->fetchAll(PDO::FETCH_NUM);
-
-		var_dump($r);
 
 		return $r[0][0];
 	}
@@ -196,8 +199,6 @@ class HotelFactory extends AbstractFactory {
 		$sql = "SELECT " . $nameOfQuarto . ", COUNT(" . $nameOfQuarto . ") FROM tbreserva " .
 		"WHERE (dataEntrada >= '" . $dataEntrada . "' AND dataEntrada <= '" . $dataSaida .
 		"') OR (dataEntrada <= '" . $dataEntrada . "' AND dataSaida >= '" . $dataSaida . "') OR (dataSaida >= '" . $dataEntrada . "' AND dataSaida <= '" . $dataSaida . "') GROUP BY " . $nameOfQuarto;
-
-		//var_dump($sql);
 
 		try {
 			$resultRows = $this->db->query($sql);
@@ -254,60 +255,6 @@ class HotelFactory extends AbstractFactory {
 
             return $result;
     }
-
-
-/*	/**
-	* Lista os objetos persistidos no banco, que possuem o $id.
-	* @param string $id - id a ser buscado.
-	* @return  array -  Array de objetos da classe, ou null se não encontrar
-	* objetos.
-	*/
-/*	public function buscar(string $param): array{
-		$sql = "SELECT * FROM tbhospede WHERE id='" . $param . "'";
-
-		try {
-			$resultRows = $this->db->query($sql);
-
-			if (!($resultRows instanceof PDOStatement)) {
-				throw new Exception("Tem erro no seu SQL!<br> '" . $sql . "'");
-			}
-
-			$resultObject = $this->queryRowsToListOfObjects($resultRows, "Contato");
-		} catch (Exception $exc) {
-
-			echo $exc->getMessage();
-			$resultObject = null;
-		}
-
-		return $resultObject;
-	}
-
-	*/
-
-    /*
-
-	public function listar(): array {
-
-		$sql = "SELECT * FROM tbinfoconversao";
-
-		try {
-			$resultRows = $this->db->query($sql);
-
-			if (!($resultRows instanceof PDOStatement)) {
-				throw new Exception("Tem erro no seu SQL!<br> '" . $sql . "'");
-			}
-
-			$resultObject = $this->queryRowsToListOfObjects($resultRows, "Converte");
-
-			return $resultObject;
-
-		} catch (Exception $exc) {
-			echo $exc->getMessage();
-			$resultObject = array();
-		}
-	}
-
-	*/
 }
 
 ?>

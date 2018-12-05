@@ -30,7 +30,7 @@ Data: 11 /10 /2018
 			<h2>Cancelamento da Reserva</h2>
 
 			<?php
-				if($flag_reserva == 1){
+				if(isset($flag_reserva) and $flag_reserva == 1){
 					echo "<p> Selecione qual reserva deseja cancelar:</p>";
 
 					echo "<p>";

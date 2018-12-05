@@ -1,4 +1,19 @@
 <?php
+/*
+* Trabalho realizado para a disciplina de Programação para Web da Faculdade de
+* Computação da Universidade Federal de Mato Grosso do Sul (FACOM / UFMS).
+* Trata-se de um sistema de reservas de um hotel específico.
+*
+*
+*
+* AbstractFactory - Classe abstrata que define o padrão para todas as fábricas.
+
+* @author Isadora Ajala Martinez
+* @author Laís Santos de Souza
+*
+*
+* @version 6.0 - 05/Dez/2018
+*/
 
 abstract class AbstractFactory {
 
@@ -14,7 +29,6 @@ abstract class AbstractFactory {
         try
         {
             $this->db = new PDO( 'mysql:host=' . MYSQL_HOST . ';dbname=' . MYSQL_DB_NAME.';charset=utf8', MYSQL_USER, MYSQL_PASSWORD );
-            //$this->db = setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         catch ( PDOException $e ){
             echo 'Erro ao conectar com o MySQL: ' . $e->getMessage();
@@ -30,12 +44,6 @@ abstract class AbstractFactory {
     abstract public function atualizar($obj); 
     abstract public function countDatas(String $dataEntrada, String $dataSaida, String $quarto): array;
     
-    /**
-    * Lista os objetos persistidos no banco, que possuem o $email.
-    * @param string $email - email a ser buscado.
-    * @return  array -  Array de objetos da classe, ou null se não encontrar
-    * objetos.
-    */
    
     protected function queryRowsToListOfObjects
     (PDOStatement $result, $nameObject): array {
@@ -43,8 +51,6 @@ abstract class AbstractFactory {
         $r = $result->fetchAll(PDO::FETCH_NUM);
         
         foreach ($r as $row) {
-            
-            //unset($row[0]); //essa linha foi comentada pois ignorava o id do objeto
             
             $ref = new ReflectionClass($nameObject);
             

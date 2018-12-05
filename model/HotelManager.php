@@ -5,6 +5,23 @@ require_once("model/Hospede.php");
 require_once("model/Reserva.php");
 require_once("model/HotelFactory.php");
 
+/*
+* Trabalho realizado para a disciplina de Programação para Web da Faculdade de
+* Computação da Universidade Federal de Mato Grosso do Sul (FACOM / UFMS).
+* Trata-se de um sistema de reservas de um hotel específico.
+*
+*
+*
+* Classe HotelManager - Classe responsável pela lógica de negócio.
+* 
+*
+* @author Isadora Ajala Martinez
+* @author Laís Santos de Souza
+*
+*
+* @version 6.0 - 05/Dez/2018
+*/
+
 class HotelManager {
 
 	private  $id;
@@ -23,13 +40,28 @@ class HotelManager {
         $this->factory = new HotelFactory();
     }
 
+
+    /**
+    * Salva os dados do hóspede no banco de dados
+    * @param string $nome - nome do hóspede
+    * @param string $email - email do hóspede
+    * @param string $telefone - telefone do hóspede
+    * @param string $dataNascimento - data de nascimento do hóspede
+    * @param string $cpf - cpf do hóspede
+    * @param string $rua - rua do hóspede  
+    * @param string $numeroCasa - número da casa do hóspede
+    * @param string $bairro - bairro do hóspede
+    * @param string $cep - cep do hóspede
+    * @param string $senha - senha do hóspede para login
+    * @return string $msg - Mensagem para o hóspede indicando se o cadastro foi ou não 
+    efetuado com sucesso
+    */
     public function cadastra($nome, $email, $telefone, $dataNascimento, $cpf, $rua, 
                              $numeroCasa, $bairro, $cep, $senha){
 
         $result = $this->factory->buscarPorEmail($email);
-        //var_dump($result);
 
-        // se o resultado for igual a 0 itens, então salva hospede
+        // Se result for igual a 0 itens, então salva hospede
         if (count($result) == 0) {
 
             $hospede = new Hospede("", $nome, $email, $telefone, $dataNascimento, $cpf, 
@@ -62,13 +94,28 @@ class HotelManager {
      
     }
 
+    /**
+    * Altera o cadastro do hóspede
+    * @param string $nome - nome do hóspede
+    * @param string $email - email do hóspede
+    * @param string $telefone - telefone do hóspede
+    * @param string $dataNascimento - data de nascimento do hóspede
+    * @param string $cpf - cpf do hóspede
+    * @param string $rua - rua do hóspede  
+    * @param string $numeroCasa - número da casa do hóspede
+    * @param string $bairro - bairro do hóspede
+    * @param string $cep - cep do hóspede
+    * @param string $senha - senha do hóspede para login
+    * @return string $msg - Mensagem para o hóspede indicando se o cadastro foi ou não 
+    alterado com sucesso
+    */
+
     public function alterarCadastro($nome, $email, $telefone, $dataNascimento, $cpf, $rua, 
                              $numeroCasa, $bairro, $cep, $senha): string{
 
-        //consulta o e-mail no banco
         $result = $this->factory->buscarPorEmail($email);
 
-        // se o resultado for igual a 0 itens, então salva hospede
+        // se o resultado for igual a 0 itens, então salva hospede:
         if (count($result) == 0) {
             $sucesso = false;
             $msg = "Não foi possível alterar seu cadastro.";
@@ -95,6 +142,13 @@ class HotelManager {
         return $msg;
     }
 
+     /**
+    * Verifica se o hóspede digitou email e senha corretamente 
+    * @param string $email - email de login do hóspede
+    * @param string $senha - senha de login do hóspede
+    * @return string -  Retorna o nome do hóspede que será salvo em sessão pelo controller
+    */
+    
     public function processaLogin(string $email, string $senha): string {
 
         $hospede = $this->factory->buscarPorEmail($email);
@@ -118,10 +172,14 @@ class HotelManager {
         
     }
 
-    // verifica se $dataEntrada está dentro do intervalo das datas, 
-    // quantas vezes está e se essa quantidade ultrapassa a quantidade
-    // de quartos
-
+    /**
+    * Verifica há disponibilidade de um quarto em específico
+    * @param string $dataEntrada - Data de entrada da reserva
+    * @param string $dataSaida - Data de saída da reserva
+    * @param string $quarto - Indica a quantidade de quartos solicitada
+    * @param string $nomeOfQuarto - String com o nome do quarto
+    * @return int -  Indica se este quarto está disponível
+    */
     public function verificaDisponibilidade(String $dataEntrada, 
                                             String $dataSaida, 
                                             String $quarto,
@@ -144,6 +202,21 @@ class HotelManager {
         return $sucesso;
     }
 
+
+    /**
+    * Verifica se há quartos disponíveis ou não para a data solicitada
+    * @param string $sucesso1 - Indica disponibilidade para o quarto Simplex 
+    * @param string $sucesso2 - Indica disponibilidade para o quarto Lux
+    * @param string $sucesso3 - Indica disponibilidade para o quarto Lux Master
+    * @param string $sucesso4 - Indica disponibilidade para o quarto Lux Imperial
+    * @param string $nQuartoSimple - Quantidade de quartos Simplex solicitado pelo hóspede
+    * @param string $nQuartoLux - Quantidade de quartos Lux solicitado pelo hóspede
+    * @param string $nQuartoLuxMaster - Quantidade de quartos Lux Master solicitado pelo hóspede
+    * @param string $nQuartoLuxImperial - Quantidade de quartos Lux Imperial solicitado pelo hóspede
+    * @param string $dataEntrada - Data de entrada da reserva
+    * @param string $dataSaida - Data de saída da reserva
+    * @return int -  Indica se há quartos disponíveis ou não para a data solicitada
+    */
     public function verificaQuartos($sucesso1, $sucesso2, $sucesso3, $sucesso4,
                                     $nQuartoSimple, $nQuartoLux, $nQuartoLuxMaster,
                                     $nQuartoLuxImperial, $dataEntrada, $dataSaida): int{
@@ -204,6 +277,12 @@ class HotelManager {
         return $flag;  
     }
 
+
+    /**
+    * Salva os dados de reserva que estão armazenados em sessão no banco de dados
+    * @param 
+    * @return $msg - Mensagem para o hóspede indicando sucesso ou falha
+    */
     public function salvarReserva(){
         
         $reserva = new Reserva("", $_SESSION['emailHospede'], $_SESSION['dataEntrada'], 
@@ -222,6 +301,13 @@ class HotelManager {
         return $msg;
 
     }
+
+
+    /**
+    * Armazena os atributos do objeto reserva em sessão
+    * @param array $reserva 
+    * @return 
+    */
     public function salvarReservaEmSessao($reserva){
 
         $_SESSION['emailHospede'] = $reserva[0]->getEmailHospede();
@@ -238,6 +324,13 @@ class HotelManager {
         $_SESSION['codSeguranca'] = $reserva[0]->getCodSeguranca();
         $_SESSION['parcelas'] = $reserva[0]->getParcelas();
     }
+
+
+    /**
+    * Limpa as sessões utilizadas para armazenar os dados no momento da reserva
+    * @param 
+    * @return  
+    */
     public function limparSessao(){
 
         if(isset($_SESSION['dataEntrada']))
@@ -283,6 +376,13 @@ class HotelManager {
             $flag = 0;
     }
 
+
+    /**
+    * Busca dados do hóspede pelo e-mail
+    * @param string $email - email a ser buscado.
+    * @return  array -  Array de objetos com os dados do hóspede, ou null se não encontrar
+    * objetos.
+    */
     public function busca(string $email): array{
 
         $hospede = $this->factory->buscarPorEmail($email);
@@ -290,6 +390,12 @@ class HotelManager {
         return $hospede;
     }
 
+    /**
+    * Busca reservas do hóspede pelo e-mail 
+    * @param string $email - email a ser buscado.
+    * @return  array -  Array de objetos com os dados das reservas, ou null se não encontrar
+    * objetos.
+    */
     public function buscarReservaPorEmail(string $email): array{
 
         $reserva = $this->factory->buscarReservaPorEmail($email);  
@@ -298,6 +404,12 @@ class HotelManager {
     }    
 
 
+    /**
+    * Busca reserva pelo id
+    * @param string $id - id a ser buscado.
+    * @return array -  Array de objetos com os dados da reerva, ou null se não encontrar
+    * objetos.
+    */
     public function buscarReservaPorId(string $id): array{
 
         $reserva = $this->factory->buscarReservaPorId($id);  
@@ -305,6 +417,12 @@ class HotelManager {
         return $reserva;
     }    
 
+    /**
+    * Busca ids das reservas do hóspede pelo e-mail para cancelar uma delas
+    * @param string $email - email a ser buscado.
+    * @return  array -  Array de objetos com os ids das reervas, ou null se não encontrar
+    * objetos.
+    */
     public function buscaReservaParaCancelar(string $email): array{
 
         $reserva = $this->factory->buscarReservaPorEmail($email);  
