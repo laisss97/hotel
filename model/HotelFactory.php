@@ -47,9 +47,7 @@ class HotelFactory extends AbstractFactory {
 
     public function salvarReserva($obj) {
     	
-        $novaReserva = $obj;   //arrumar
-
-        var_dump($novaReserva);
+        $novaReserva = $obj; 
 
 		try {
 		        $data = [ 'emailHospede' => $novaReserva->getEmailHospede(),
@@ -115,13 +113,10 @@ class HotelFactory extends AbstractFactory {
 
 	public function countDatas(String $dataEntrada, String $dataSaida, String $nameOfQuarto): array{
 
-		//$sql = "SELECT * FROM tbreserva"; // Escrever SQL
-		$sql = "SELECT COUNT(" . $nameOfQuarto . ") FROM tbreserva " .
-		"WHERE dataEntrada > " . $dataEntrada . " AND dataEntrada < " . $dataSaida .
-				 " OR dataEntrada < " . $dataEntrada . " AND dataSaida > " . $dataSaida .
-				 " OR dataSaida > " . $dataEntrada . " AND dataSaida < " . $dataSaida;
+		$sql = "SELECT nQuartoSimple, COUNT(" . $nameOfQuarto . ") FROM tbreserva " .
+		"WHERE (dataEntrada >= '" . $dataEntrada . "' AND dataEntrada <= '" . $dataSaida .
+		"') OR (dataEntrada <= '" . $dataEntrada . "' AND dataSaida >= '" . $dataSaida . "') OR (dataSaida >= '" . $dataEntrada . "' AND dataSaida <= '" . $dataSaida . "') GROUP BY nQuartoSimple";
 
-		
 		try {
 			$resultRows = $this->db->query($sql);
 
@@ -130,10 +125,6 @@ class HotelFactory extends AbstractFactory {
 			}
 
 			$r = $resultRows->fetchAll(PDO::FETCH_NUM);
-        	
-        	echo "CountDatas\n";
-			var_dump($r);
-			//$resultObject = $this->queryRowsToListOfObjects($resultRows, "Reserva");
 
 		} catch (Exception $exc) {
 
