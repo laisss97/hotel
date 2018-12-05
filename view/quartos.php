@@ -50,18 +50,18 @@ Data: 11 /10 /2018
 	<div class="quartos">
 		
 		<img src="view/imagens/quarto1.jpg"class="img-rounded" alt="quarto1"  width=60%; height=70%;>
-		<div class="descricao"><strong>Quarto Simplex:</strong> cama king-size, ar-condicionado, wi-fi, tv e decoração em tons quentes.</div>
+		<div class="descricao"><strong>Quarto Simplex:</strong> cama king-size, ar-condicionado, wi-fi, tv e decoração em tons quentes. <strong>Valor da diária: R$ 1000,00</strong></div>
 
 		<img src="view/imagens/quarto2.jpg" class="img-rounded" alt="quarto2" width=60%; height=60%;>
-		<div class="descricao"><strong>Quarto Lux:</strong> cama king-size, ar-condicionado, wi-fi, smart-tv, pequeno escritório adjunto para reuniões, minibar e decoração em tons pastéis.</div>
+		<div class="descricao"><strong>Quarto Lux:</strong> cama king-size, ar-condicionado, wi-fi, smart-tv, pequeno escritório adjunto para reuniões, minibar e decoração em tons pastéis. <strong>Valor da diária: R$ 1500,00</strong></div></div>
 
 
 		<img src="view/imagens/quarto3.jpg" class="img-rounded" alt="quarto3" width=60%; height=60%;>
-		<div class="descricao"><strong>Quarto Lux Master:</strong> cama king-size, ar-condicionado, wi-fi, smart-tv, pequeno escritório adjunto para reuniões, frigorífico, minibar e decoração em tons claros.</div>
+		<div class="descricao"><strong>Quarto Lux Master:</strong> cama king-size, ar-condicionado, wi-fi, smart-tv, pequeno escritório adjunto para reuniões, frigorífico, minibar e decoração em tons claros. <strong>Valor da diária: R$ 2000,00</strong></div>
 
 
 		<img src="view/imagens/quarto4.jpg" class="img-rounded" alt="quarto4" width=60%; height=60%;>
-		<div class="descricao"><strong>Quarto Lux Imperial:</strong> cama king-size, ar-condicionado, wi-fi, smart-tv, pequeno escritório adjunto para reuniões, frigorífico, minibar, visão panorâmica da cidade e decoração em tons escuros.</div>
+		<div class="descricao"><strong>Quarto Lux Imperial:</strong> cama king-size, ar-condicionado, wi-fi, smart-tv, pequeno escritório adjunto para reuniões, frigorífico, minibar, visão panorâmica da cidade e decoração em tons escuros. <strong>Valor da diária: R$ 2500,00</strong></div>
 
 
 	</div>
