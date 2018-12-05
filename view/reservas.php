@@ -19,30 +19,33 @@ Data: 11 /10 /2018
 
 	<section>
 		<nav>
-			<a href="?funcao=cancelaReserva">Início</a>
+			<a href="?funcao=homeLogin">Início</a>
 		</nav>
 	</section>
 
 	<div class="reserva">
 
-    <h2>ESCOLHA A DATA:</h2>
+	    <h2>ESCOLHA A DATA:</h2>
 
-    <form action="?funcao=recebeData" method="post">
-    	
-	    <label>CHECK IN:</label><br>
-	    <input type="date" name="dataEntrada" required><br>
+	    <form action="?funcao=recebeData" method="post">
+	    	
+		    <label>CHECK IN:</label><br>
+		    <input type="date" name="dataEntrada" required><br>
 
-	    <label>CHECK OUT:</label><br>
-	    <input type="date" name="dataSaida" required><br> 
+		    <label>CHECK OUT:</label><br>
+		    <input type="date" name="dataSaida" required><br> 
 
-	    <input type="submit" value="Enviar" name = "datasEnviado">
+		    <input type="submit" value="Enviar" name = "datasEnviado">
 
-	</form>
-  </div>
+		</form>
+    
+		
+		<?php 
+			if(isset($flag) and $flag == 1)
+				echo $_SESSION['msg_data'];
+		?>		
 
-	<?php 
-		if(isset($flag) and $flag == 1)
-			$_SESSION['msg_data'];
-	?>		
+    </div>
+
 </body>
 </html>

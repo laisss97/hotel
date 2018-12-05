@@ -27,6 +27,7 @@ Data: 11 /10 /2018
 		<h2>ESCOLHA OS QUARTOS:</h2>
 
     <form action="?funcao=verificaDisponibilidade" method="post">
+    	
     	<label>Quarto Simple:</label><br>
 	    <input type="number" name="nQuartoSimple" required><br>
 

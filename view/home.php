@@ -38,29 +38,29 @@ Data: 1 /12 /2018
 		
 
 		<div class="gallery">
-			<a target="_blank" href="https://media-cdn.tripadvisor.com/media/photo-s/0a/63/9c/f4/recepcao.jpg">
-				<img src="https://media-cdn.tripadvisor.com/media/photo-s/0a/63/9c/f4/recepcao.jpg" alt="recepcao" width="200" height="200">
+			<a target="_blank" href="view/icon/recepcao.jpg">
+				<img src="view/icon/recepcao.jpg" alt="recepcao" width="200" height="200">
 			</a>
 			<div class="desc">Recepção</div>
 		</div>
 
 		<div class="gallery">
-			<a target="_blank" href="http://www.sw-hotelguide.com/portugal/bussaco/palace-hotel-bussaco/images/stories/rotators/rooms/rooms_02.jpg">
-				<img src="http://www.sw-hotelguide.com/portugal/bussaco/palace-hotel-bussaco/images/stories/rotators/rooms/rooms_02.jpg" alt="quarto" width="200" height="200">
+			<a target="_blank" href="view/icon/quarto1.jpg">
+				<img src="view/icon/quarto1.jpg" alt="quarto" width="200" height="200">
 			</a>
 			<div class="desc">Quarto</div>
 		</div>
 
 		<div class="gallery">
-			<a target="_blank" href="http://www.hotelestanciaatibainha.com.br/images/lazer/piscinas/coberta-infantil-2.jpg">
-				<img src="http://www.hotelestanciaatibainha.com.br/images/lazer/piscinas/coberta-infantil-2.jpg" alt="piscina" width="200" height="200">
+			<a target="_blank" href="view/icon/piscina.jpg">
+				<img src="view/icon/piscina.jpg" alt="piscina" width="200" height="200">
 			</a>
 			<div class="desc">Piscina</div>
 		</div>
 
 		<div class="gallery">
-			<a target="_blank" href="http://www.hotelunique.com.br/images/034_hotel%20unique_%20spa%20room.jpg?crc=319208505">
-				<img src="http://www.hotelunique.com.br/images/034_hotel%20unique_%20spa%20room.jpg?crc=319208505" alt="spa" width="200" height="200">
+			<a target="_blank" href="view/icon/spa.jpg">
+				<img src="view/icon/spa.jpg" alt="spa" width="200" height="200">
 			</a>
 			<div class="desc">Spa</div>
 		</div>
@@ -73,15 +73,15 @@ Data: 1 /12 /2018
 		</div>-->
 
 		<div class="gallery">
-			<a target="_blank" href="http://apureguria.com/wp-content/uploads/2016/02/academia-hotel-alpestre.jpg">
-				<img src="http://apureguria.com/wp-content/uploads/2016/02/academia-hotel-alpestre.jpg" alt="academia" width="200" height="200">
+			<a target="_blank" href="view/icon/academia.jpg">
+				<img src="view/icon/academia.jpg" alt="academia" width="200" height="200">
 			</a>
 			<div class="desc">Academia</div>
 		</div>
 
 		<div class="gallery">
-			<a target="_blank" href="https://gustavosirelli.files.wordpress.com/2010/04/republica.jpg">
-				<img src="https://gustavosirelli.files.wordpress.com/2010/04/republica.jpg" alt="jardim" width="200" height="200">
+			<a target="_blank" href="view/icon/jardim.jpg">
+				<img src="view/icon/jardim.jpg" alt="jardim" width="200" height="200">
 			</a>
 			<div class="desc">Jardim</div>
 		</div>

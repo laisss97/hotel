@@ -55,9 +55,11 @@ Data: 1 /12 /2018
 			<p>
 				<label for="parcelas">Parcelar em:</label><br>
 				<select name="parcelas">
+					<option value="parcelas_3x">1 vez</option>
 				    <option value="parcelas_3x">3 vezes</option>
 				    <option value="parcelas_5x">5 vezes</option>
 				    <option value="parcelas_6x">6 vezes</option>
+				    <option value="parcelas_10x">10 vezes</option>
 			    </select>
 
 			</p>

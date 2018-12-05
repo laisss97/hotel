@@ -33,6 +33,60 @@ Data: 11 /10 /2018
 	<article>
 		<h2>Bem vindo <?= $_SESSION['nomeHospede']; ?> !</h2>
 		<p>O Hotel Palácios está há 200 anos oferecendo hospedagem, conforto e requinte para seus hóspedes.</p>
+		<p>Fundado por Don Cássio de Santana Silvério e a baronesa Hilda Teodora Miranda Lourenço, o Hotel Palácios foi fundado com o objetivo de proporcionar serviços de hospedagem de excelência para cidadãos de alto poder aquisitivo, personagens da política mundial e celebridades.</p>
+
+		<!--Galeria de imagens internas do hotel-->		
+
+		
+
+		<div class="gallery">
+			<a target="_blank" href="view/icon/recepcao.jpg">
+				<img src="view/icon/recepcao.jpg" alt="recepcao" width="200" height="200">
+			</a>
+			<div class="desc">Recepção</div>
+		</div>
+
+		<div class="gallery">
+			<a target="_blank" href="view/icon/quarto1.jpg">
+				<img src="view/icon/quarto1.jpg" alt="quarto" width="200" height="200">
+			</a>
+			<div class="desc">Quarto</div>
+		</div>
+
+		<div class="gallery">
+			<a target="_blank" href="view/icon/piscina.jpg">
+				<img src="view/icon/piscina.jpg" alt="piscina" width="200" height="200">
+			</a>
+			<div class="desc">Piscina</div>
+		</div>
+
+		<div class="gallery">
+			<a target="_blank" href="view/icon/spa.jpg">
+				<img src="view/icon/spa.jpg" alt="spa" width="200" height="200">
+			</a>
+			<div class="desc">Spa</div>
+		</div>
+
+		<!--<div class="gallery"> 
+			<a target="_blank" href="http://www.maripelomundo.com.br/wp-content/uploads/2015/12/Pal%C3%A1cio-Nacional-da-Ajuda-em-Lisboa-Sal%C3%A3o-de-Banquetes.jpg">
+				<img src="http://www.maripelomundo.com.br/wp-content/uploads/2015/12/Pal%C3%A1cio-Nacional-da-Ajuda-em-Lisboa-Sal%C3%A3o-de-Banquetes.jpg" alt="salão de festas" width="200" height="200">
+			</a>
+			<div class="desc">Salão de Festas</div>
+		</div>-->
+
+		<div class="gallery">
+			<a target="_blank" href="view/icon/academia.jpg">
+				<img src="view/icon/academia.jpg" alt="academia" width="200" height="200">
+			</a>
+			<div class="desc">Academia</div>
+		</div>
+
+		<div class="gallery">
+			<a target="_blank" href="view/icon/jardim.jpg">
+				<img src="view/icon/jardim.jpg" alt="jardim" width="200" height="200">
+			</a>
+			<div class="desc">Jardim</div>
+		</div>
 	</article>
 
 	<footer> 

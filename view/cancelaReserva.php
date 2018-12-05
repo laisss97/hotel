@@ -15,24 +15,22 @@ Data: 11 /10 /2018
 <body>
 	
 	<header>
-		<h1>Hotel Palácios Cancelar Reserva!!!</h1>
+		<h1>Hotel Palácios</h1>
 	</header>
 
 	<section>
 		<nav>
 			<a href="?funcao=homeLogin">Início</a>
-			<a href="?funcao=alterarCadastro">Alterar cadastro</a>
-			<a href="?funcao=reservar">Reservar</a>
-			<a href="?funcao=cancelarReserva">Cancelar reserva</a>
-			<a href="?funcao=quartos">Quartos</a>
-			<a href="?funcao=servicos">Serviços</a>
-			<a href="?funcao=sairLogin">Sair</a>
+		
 		</nav>
 	</section>
 
 	<article>
-		<h2>Bem vindo Fulano!</h2>
-		<p>O Hotel Palácios está há 200 anos oferecendo hospedagem, conforto e requinte para seus hóspedes.</p>
+
+		<h2>Cancelamento da Reserva</h2>
+		
+		<p>????</p>
+		
 	</article>
 
 	<footer> 

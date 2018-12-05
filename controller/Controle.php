@@ -116,7 +116,13 @@ class Controle {
     }
 
     public function homeLogin() {
-        //flag de login recebe 1
+
+        if(isset($flag))
+            $flag = 0;
+            
+        if(isset($_SESSION['msg_data']))
+            unset($_SESSION['msg_data']);
+
         require 'view/homeLogin.php';
     }
 
@@ -239,10 +245,7 @@ class Controle {
         }
     }  
 
-    public function verificaDisponibilidade() {  // Escolher quarto antes da data?
-                                                // Escolher data e quarto? Sim!!!
-                                                // Escolher data e depois mostrar só os quartos
-                                                // disponíveis?
+    public function verificaDisponibilidade() {  
         
         if (isset($_POST['quartosEnviado'])) 
         {
@@ -305,8 +308,12 @@ class Controle {
         
         if (isset($_POST['datasEnviado'])) 
         {           
-            $_SESSION['dataEntrada'] = $_POST['dataEntrada'];
-            $_SESSION['dataSaida']= $_POST['dataSaida'];
+            $dataEntrada = date("Y-m-d", strtotime($_POST['dataEntrada']));
+            $dataSaida = date("Y-m-d", strtotime($_POST['dataSaida']));
+
+            $_SESSION['dataEntrada'] = $dataEntrada;
+            $_SESSION['dataSaida']= $dataSaida;
+            
             require 'view/escolherQuarto.php';           
         }
         else
@@ -323,8 +330,7 @@ class Controle {
             $_SESSION['codSeguranca'] = $_POST['codSeguranca'];
             $_SESSION['parcelas'] = $_POST['parcelas'];
 
-            require "view/finalizaReserva.php"; // nesta page exibir todos os dados, preço, dar opção de cancelar e de finalizar, 
-            // após finalizar, criar função que salva no BD todos os dados em sessão e depois libera
+            require "view/finalizaReserva.php"; 
         }
     }
 
@@ -339,36 +345,14 @@ class Controle {
       
     public function cancelaReserva(){
 
+        echo "Cancela Reserva\n";
+        $msg = "A reserva foi cancelada!";
         $this->manager->limparSessao();
+        
         require "view/mensagemCancelaReserva.php";
     }
     
 }
-/*
-
-    public function exibeHistorico(){
-        $historicoConversao = $this->manager->lista();
-        require 'view/historico.php';
-    }
-
-    public function converteMedida() {
-        if (isset($_POST['enviado'])) 
-        {
-            $de = $_POST['de'];
-            $para = $_POST['para'];
-
-            $deValor = $_POST['deValor'];
-            $conversao = $this->manager->converte($de, $para, $deValor); # Calcula conversão
-
-            $infoConversao = new Converte($de, $para, $deValor, $conversao);
-
-            $this->manager->salvarHistorico($infoConversao);
-
-            require 'view/homeResult.php';
-        }
-    }
-
-    */
 
 ?>
 
