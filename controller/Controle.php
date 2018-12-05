@@ -2,6 +2,25 @@
 
 require_once("model/HotelManager.php");
 
+/*
+* Trabalho realizado para a disciplina de Programação para Web da Faculdade de
+* Computação da Universidade Federal de Mato Grosso do Sul (FACOM / UFMS).
+* Trata-se de um sistema de reservas de um hotel específico.
+*
+*
+*
+* Classe Controle - controla e gerencia do fluxo da aplicação.
+* Essa classe segue o padrão arquitetural MVC, no qual assume o papel de
+* controller.
+*
+* @author Isadora Ajala Martinez
+* @author Laís Santos de Souza
+*
+*
+* @version 6.0 - 05/Dez/2018
+*/
+
+
 class Controle {
 
     private $manager;
@@ -115,6 +134,7 @@ class Controle {
         require 'view/servicos.php';
     }
 
+    // Esta será a tela home após o login do usuário
     public function homeLogin() {
 
         if(isset($flag))
@@ -125,7 +145,6 @@ class Controle {
 
         require 'view/homeLogin.php';
     }
-
     
     public function reservar() {
         require 'view/reservas.php';
@@ -135,19 +154,17 @@ class Controle {
         require 'view/alteraReserva.php';
     }
 
+    // Permite que o usuário cancele a reserva desejada
     public function cancelarReserva() {
 
         if(isset($_SESSION['emailHospede'])){
 
             if(isset($_POST['codigoEnviado'])){
                 $id = $_POST['codigo'];
-                var_dump($id);
                 $reserva = $this->manager->buscarReservaPorId($id);
-                var_dump($reserva);
                 $this->manager->salvarReservaEmSessao($reserva);
 
                 require 'view/mensagemConfirmaCancelamento.php';
-
             }
             else
             {
@@ -163,7 +180,8 @@ class Controle {
                 else
                 {
                     $flag_reserva = 0;
-                    $msg = _SESSION['nomeHospede'] . ", você não tem uma reserva no Hotel Palacios";
+                    $msg = $_SESSION['nomeHospede'] . ", você não tem uma reserva no Hotel Palacios.";
+                    require 'view/cancelaReserva.php';
                 }  
             }
         }
@@ -174,15 +192,18 @@ class Controle {
         }
     }
 
+    // Desabilita as sessões com nome e email do hóspede
+    // Volta para a tela home inicial
+
     public function sairLogin() {
 
-        // flag de login recebe 0
         unset($_SESSION['nomeHospede']);
         unset($_SESSION['emailHospede']);
         unset ($_SESSION['sucesso']);
         require 'view/home.php';
     }
 
+    // Cadastra novo hóspede
     public function processaCadastro() {
         
         if (isset($_POST['cadastroEnviado'])) 
@@ -206,6 +227,7 @@ class Controle {
         }
     }  
 
+    // Permite que o hóspede altere o cadastro salvo
     public function alterarCadastro() {
 
         if (isset($_POST['alteraCadastroEnviado'])) {
@@ -221,8 +243,7 @@ class Controle {
                     $bairro = $_POST['bairro'];
                     $cep = $_POST['cep'];
                     $senha = $_POST['senha'];
-
-        
+ 
                     $msg = $this->manager->alterarCadastro($nome, $email, $telefone, $dataNascimento,                            $cpf, $rua, $numeroCasa, $bairro, $cep, $senha);
     
             } catch (Exception $e) {
@@ -236,7 +257,6 @@ class Controle {
             try{
 
                 if(isset($_SESSION['emailHospede'])){
-                    //$email = "aleatorio@gmail.com";
                     $email = $_SESSION['emailHospede'];
                     $hospede = $this->manager->busca($email);
                     require 'view/alteraCadastro.php';
@@ -255,6 +275,7 @@ class Controle {
         }
     }
 
+    // Processa os dados recebidos para efetuar o login do hóspede
     public function processaLogin() {
         
         if (isset($_POST['loginEnviado'])) 
@@ -264,7 +285,6 @@ class Controle {
             
             $result = $this->manager->processaLogin($email, $senha);
 
-            //session_start();
             $_SESSION['nomeHospede'] = $result;
             $_SESSION['emailHospede'] = $email;
 
@@ -280,6 +300,7 @@ class Controle {
         }
     }  
 
+    // Verifica a disponibilidade de quartos de acordo com o período de estadia
     public function verificaDisponibilidade() {  
         
         if (isset($_POST['quartosEnviado'])) 
@@ -339,6 +360,7 @@ class Controle {
         }
     }
 
+    // Salva em sessão as datas de Entrada e Saída do hóspede
     public function recebeData() {
         
         if (isset($_POST['datasEnviado'])) 
@@ -355,6 +377,7 @@ class Controle {
             require 'view/reservas.php';
     }
 
+    // Salva em sessão os dados de pagamento
     public function processaPagamento(){
         if (isset($_POST['pagamentoEnviado'])) 
         {               
@@ -369,19 +392,22 @@ class Controle {
         }
     }
 
+    // Salva no banco os dados da reserva
+    // Limpa os dados da reserva armazenados em sessão
+    // Encaminha para página de confirmação da reserva
     public function confirmaReserva(){
 
         $msg = $this->manager->salvarReserva();
-
 
         $this->manager->limparSessao();
 
         require "view/mensagemConfirmaReserva.php";
     }
       
+    // Limpa os dados da reserva armazenados em sessão
+    // Encaminha para página de cancelamento da reserva
     public function cancelaReserva(){
 
-        echo "Cancela Reserva\n";
         $msg = "A reserva foi cancelada!";
         $this->manager->limparSessao();
         
