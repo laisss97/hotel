@@ -349,3 +349,9 @@ a.clica2 {
     margin: 4px 2px;
     cursor: pointer;
 }
+/*Mensagem Disponibilidade****************************************************************************************************/
+
+div.mensagemDisp{
+	color: red;
+	font-size: 60px;
+}
