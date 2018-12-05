@@ -35,9 +35,6 @@ Data: 11 /10 /2018
 
 					echo "<p>";
 
-					//for($i = 0; $i < count($msg); $i++)
-            		//	echo "Código = " . $msg[$i];
-
 					echo "<form action=\"?funcao=cancelarReserva\" method=\"post\">
 							<label for=\"codigo\">Código:</label><br>
 							<select name=\"codigo\">";
@@ -48,8 +45,6 @@ Data: 11 /10 /2018
 					echo "</select>
 						     <input type=\"submit\" value=\"Enviar código\" name=\"codigoEnviado\"/><br>      
 		        		</form>";
-
-		        	//echo $c;
 
 	            	echo "</p>";
 					}

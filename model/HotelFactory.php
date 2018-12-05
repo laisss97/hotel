@@ -255,6 +255,31 @@ class HotelFactory extends AbstractFactory {
 
             return $result;
     }
+    
+    /**
+    * Deleta reserva pelo id
+    * @param string $id - id a ser buscado.
+    */
+    public function deletaReservaPeloId($id){
+
+    	$sql = "DELETE FROM `tbreserva` WHERE id = $id";
+
+		try {
+			$resultRows = $this->db->query($sql);
+
+			if (!($resultRows instanceof PDOStatement)) {
+				throw new Exception("Tem erro no seu SQL!<br> '" . $sql . "'");
+			}
+
+			$r = $resultRows->fetchAll(PDO::FETCH_NUM);
+
+		} catch (Exception $exc) {
+
+			echo $exc->getMessage();
+			$r= null;
+		}
+		
+    }
 }
 
 ?>

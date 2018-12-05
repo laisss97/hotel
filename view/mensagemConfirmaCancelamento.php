@@ -61,7 +61,7 @@ Data: 11 /10 /2018
 		            
 		        </table>
 
-		        <p> <a href="?funcao=cancelaReserva" class="clica1" role="button">Confirmar</a> <a href="?funcao=homeLogin" class="clica2" role="button"> Cancelar</a> </p>
+		        <p> <a href="?funcao=cancelaReservaId" class="clica1" role="button">Confirmar</a> <a href="?funcao=homeLogin" class="clica2" role="button"> Cancelar</a> </p>
 
 
 		    

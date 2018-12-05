@@ -43,6 +43,7 @@ abstract class AbstractFactory {
     abstract public function buscarReservaIgual($reserva): string;
     abstract public function atualizar($obj); 
     abstract public function countDatas(String $dataEntrada, String $dataSaida, String $quarto): array;
+    abstract public function deletaReservaPeloId($id);
     
    
     protected function queryRowsToListOfObjects

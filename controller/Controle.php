@@ -108,6 +108,10 @@ class Controle {
             $this->cancelaReserva();
             break;
 
+            case "cancelaReservaId":
+            $this->cancelaReservaId();
+            break;
+
             default:
             $this->home();
             break;
@@ -161,6 +165,7 @@ class Controle {
 
             if(isset($_POST['codigoEnviado'])){
                 $id = $_POST['codigo'];
+                $_SESSION['id'] = $id;
                 $reserva = $this->manager->buscarReservaPorId($id);
                 $this->manager->salvarReservaEmSessao($reserva);
 
@@ -409,6 +414,20 @@ class Controle {
     public function cancelaReserva(){
 
         $msg = "A reserva foi cancelada!";
+        $this->manager->limparSessao();
+        
+        require "view/mensagemCancelaReserva.php";
+    }
+
+    // Limpa os dados da reserva armazenados em sessão, 
+    // Deleta do banco de dados
+    // Encaminha para página de cancelamento da reserva
+    public function cancelaReservaId(){
+
+        $msg = "A reserva foi cancelada!";
+        $id = $_SESSION['id'];
+
+        $this->manager->deletaReservaPeloId($id);
         $this->manager->limparSessao();
         
         require "view/mensagemCancelaReserva.php";

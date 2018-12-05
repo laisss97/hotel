@@ -432,5 +432,15 @@ class HotelManager {
 
         return $msg;
     }    
+
+    /**
+    * Deleta reserva pelo id
+    * @param string $id - id a ser buscado.
+    */
+    public function deletaReservaPeloId($id){
+
+        $this->factory->deletaReservaPeloId($id);
+
+    }
 }
 ?>
