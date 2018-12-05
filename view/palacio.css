@@ -206,9 +206,41 @@ div.reserva {
     background-color: #CDB38B;
     padding: 65px;
     border: 10px solid #8B795E;
+    text-align: center;  
+    
+}
+
+div.reserva input[type=date]{
+	background-color: #8B795E; 
+    border: 5px solid #FFDEAD;
+    border-radius: 12px;
+    color: black;
+    padding: 20px;
     text-align: center;
-    
-    
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+div.reserva label{
+	font-size: 25px;
+	text-decoration: underline;	
+}
+
+div.reserva button[type=submit]{
+    background-color: #8B795E; 
+    border: 5px solid #FFDEAD;
+    border-radius: 12px;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
 }
 /*Tela de Pagamento****************************************************************************/
 
