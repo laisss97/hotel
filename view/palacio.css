@@ -320,4 +320,32 @@ div.desc {
     padding: 15px;
     text-align: center;
 }
-/******************************************************************************************/
+/*Tela de Confirmação de Reserva*********************************************************************************************/
+
+a.clica1 {
+	background-color: #8B795E; 
+    border: 5px solid #33FF33;
+    border-radius: 12px;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+a.clica2 {
+	background-color: #8B795E; 
+    border: 5px solid red;
+    border-radius: 12px;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
