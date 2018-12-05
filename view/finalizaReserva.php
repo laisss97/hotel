@@ -44,7 +44,7 @@ Data: 11 /10 /2018
 				echo "<p>" . $_SESSION['nQuartoLuxImperial_h'] . " quarto(s) lux imperial </p>";
 		?>
 
-		<p> <a href="?funcao=confirmaReserva" class="clica" role="button">Confirmar</a> <a href="?funcao=cancelaReserva" class="clica" role="button"> Cancelar</a> </p>
+		<p> <a href="?funcao=confirmaReserva" class="clica1" role="button">Confirmar</a> <a href="?funcao=cancelaReserva" class="clica2" role="button"> Cancelar</a> </p>
 
 	</article>
 
