@@ -356,20 +356,24 @@ div.mensagemDisp{
 	font-size: 60px;
 }
 
+/*Tabela Confirmação cancelamento***************/
 table {
-    border-collapse: collapse;
-    margin:10px;
-    margin-top:30px;
+    border-collapse: collapse;    
+    margin-top:30px;    
+    margin-right:auto; 
+    margin-left:auto;    
+    border: 5px solid #FFDEAD;
+
 }
 
 th{
-    border: 1px solid #000000;
+    border: 1px solid black;
     padding: 10px;
-    background-color: #d6e3bc;
-    text-align: left;
+    background-color: #8B795E;
+    
 }
 
 td{
-    border: 1px solid #000000;
+    border: 1px solid #8B795E;
     padding: 10px;
 }
