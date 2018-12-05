@@ -39,11 +39,12 @@ Data: 11 /10 /2018
 
 		</form>
     
-		
+		<div class="mensagemDisp">
 		<?php 
 			if(isset($flag) and $flag == 1)
 				echo $_SESSION['msg_data'];
-		?>		
+		?>
+		</div>
 
     </div>
 
