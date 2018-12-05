@@ -211,8 +211,8 @@ div.reserva {
 }
 
 div.reserva input[type=date]{
-	background-color: #8B795E; 
-    border: 5px solid #FFDEAD;
+    background-color: white; 
+    border: 5px solid #8B795E;
     border-radius: 12px;
     color: black;
     padding: 20px;
@@ -226,7 +226,7 @@ div.reserva input[type=date]{
 
 div.reserva label{
 	font-size: 25px;
-	text-decoration: underline;	
+	text-decoration: none;	
 }
 
 div.reserva button[type=submit]{
