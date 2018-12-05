@@ -38,29 +38,29 @@ Data: 1 /12 /2018
 		
 
 		<div class="gallery">
-			<a target="_blank" href="view/icon/recepcao.jpg">
-				<img src="view/icon/recepcao.jpg" alt="recepcao" width="200" height="200">
+			<a target="_blank" href="view/imagens/recepcao.jpg">
+				<img src="view/imagens/recepcao.jpg" alt="recepcao" width="200" height="200">
 			</a>
 			<div class="desc">Recepção</div>
 		</div>
 
 		<div class="gallery">
-			<a target="_blank" href="view/icon/quarto1.jpg">
-				<img src="view/icon/quarto1.jpg" alt="quarto" width="200" height="200">
+			<a target="_blank" href="view/imagens/quarto1.jpg">
+				<img src="view/imagens/quarto1.jpg" alt="quarto" width="200" height="200">
 			</a>
 			<div class="desc">Quarto</div>
 		</div>
 
 		<div class="gallery">
-			<a target="_blank" href="view/icon/piscina.jpg">
-				<img src="view/icon/piscina.jpg" alt="piscina" width="200" height="200">
+			<a target="_blank" href="view/imagens/piscina.jpg">
+				<img src="view/imagens/piscina.jpg" alt="piscina" width="200" height="200">
 			</a>
 			<div class="desc">Piscina</div>
 		</div>
 
 		<div class="gallery">
-			<a target="_blank" href="view/icon/spa.jpg">
-				<img src="view/icon/spa.jpg" alt="spa" width="200" height="200">
+			<a target="_blank" href="view/imagens/spa.jpg">
+				<img src="view/imagens/spa.jpg" alt="spa" width="200" height="200">
 			</a>
 			<div class="desc">Spa</div>
 		</div>
@@ -73,15 +73,15 @@ Data: 1 /12 /2018
 		</div>-->
 
 		<div class="gallery">
-			<a target="_blank" href="view/icon/academia.jpg">
-				<img src="view/icon/academia.jpg" alt="academia" width="200" height="200">
+			<a target="_blank" href="view/imagens/academia.jpg">
+				<img src="view/imagens/academia.jpg" alt="academia" width="200" height="200">
 			</a>
 			<div class="desc">Academia</div>
 		</div>
 
 		<div class="gallery">
-			<a target="_blank" href="view/icon/jardim.jpg">
-				<img src="view/icon/jardim.jpg" alt="jardim" width="200" height="200">
+			<a target="_blank" href="view/imagens/jardim.jpg">
+				<img src="view/imagens/jardim.jpg" alt="jardim" width="200" height="200">
 			</a>
 			<div class="desc">Jardim</div>
 		</div>
