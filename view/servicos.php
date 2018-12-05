@@ -1,8 +1,19 @@
 <!DOCTYPE html>
+
 <!-- 
-Trablaho de Programação Web.
-Tema: reserva de quarto em hotel.
-Data: 11 /10 /2018
+/*
+* Trabalho realizado para a disciplina de Programação para Web da Faculdade de
+* Computação da Universidade Federal de Mato Grosso do Sul (FACOM / UFMS).
+* Trata-se de um sistema de reservas de um hotel específico.
+* 
+*
+* @author Isadora Ajala Martinez
+* @author Laís Santos de Souza
+*
+*
+* @version 6.0 - 05/Dez/2018
+*/
+
 -->
 <html lang="pt-br">
 <head>
