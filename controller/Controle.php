@@ -136,7 +136,42 @@ class Controle {
     }
 
     public function cancelarReserva() {
-        require 'view/cancelaReserva.php';
+
+        if(isset($_SESSION['emailHospede'])){
+
+            if(isset($_POST['codigoEnviado'])){
+                $id = $_POST['codigo'];
+                var_dump($id);
+                $reserva = $this->manager->buscarReservaPorId($id);
+                var_dump($reserva);
+                $this->manager->salvarReservaEmSessao($reserva);
+
+                require 'view/mensagemConfirmaCancelamento.php';
+
+            }
+            else
+            {
+                $email = $_SESSION['emailHospede'];
+                $reserva = $this->manager->buscarReservaPorEmail($email);
+
+                if($reserva != NULL){
+
+                    $flag_reserva = 1;
+                    $msg = $this->manager->buscaReservaParaCancelar($email);
+                    require 'view/cancelaReserva.php';        
+                }
+                else
+                {
+                    $flag_reserva = 0;
+                    $msg = _SESSION['nomeHospede'] . ", você não tem uma reserva no Hotel Palacios";
+                }  
+            }
+        }
+        else
+        {
+            $msg = "Você não está logado.";
+            require 'view/mensagemLogin.php';
+        }
     }
 
     public function sairLogin() {
@@ -337,6 +372,7 @@ class Controle {
     public function confirmaReserva(){
 
         $msg = $this->manager->salvarReserva();
+
 
         $this->manager->limparSessao();
 

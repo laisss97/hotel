@@ -1,6 +1,7 @@
 <?php
 
 require_once("Hospede.php");
+require_once("Reserva.php");
 require_once("AbstractFactory.php");
 
 class HotelFactory extends AbstractFactory {
@@ -46,10 +47,9 @@ class HotelFactory extends AbstractFactory {
     }
 
     public function salvarReserva($obj) {
-    	
-        $novaReserva = $obj; 
+    		$novaReserva = $obj; 
 
-		try {
+			try {
 		        $data = [ 'emailHospede' => $novaReserva->getEmailHospede(),
 		    			  'dataEntrada' => $novaReserva->getDataEntrada(),
 		    			  'dataSaida' => $novaReserva->getDataSaida(),
@@ -91,7 +91,10 @@ class HotelFactory extends AbstractFactory {
 	*/
 	
 	public function buscarPorEmail($param): array { // tem que ajustar
+
 		$sql = "SELECT * FROM tbhospede WHERE email='" . $param . "'";
+
+		var_dump($sql);
 
 		try {
 			$resultRows = $this->db->query($sql);
@@ -111,11 +114,90 @@ class HotelFactory extends AbstractFactory {
 		return $resultObject;
 	}
 
+	public function buscarReservaPorEmail($param): array{
+
+		$sql = "SELECT * FROM tbreserva WHERE emailHospede ='" . $param . "'";
+
+
+		try {
+			$resultRows = $this->db->query($sql);
+
+			if (!($resultRows instanceof PDOStatement)) {
+				throw new Exception("Tem erro no seu SQL!<br> '" . $sql . "'");
+			}
+
+			$resultObject = $this->queryRowsToListOfObjects($resultRows, "Reserva");
+
+		} catch (Exception $exc) {
+
+			echo $exc->getMessage();
+			$resultObject = null;
+		}
+		
+		return $resultObject;
+	}
+
+	public function buscarReservaPorId($param): array{
+
+		$sql = "SELECT * FROM tbreserva WHERE id ='" . $param . "'";
+
+		try {
+			$resultRows = $this->db->query($sql);
+
+			if (!($resultRows instanceof PDOStatement)) {
+				throw new Exception("Tem erro no seu SQL!<br> '" . $sql . "'");
+			}
+
+			$resultObject = $this->queryRowsToListOfObjects($resultRows, "Reserva");
+
+		} catch (Exception $exc) {
+
+			echo $exc->getMessage();
+			$resultObject = null;
+		}
+		
+		return $resultObject;
+	}
+
+	public function buscarReservaIgual($reserva): string{
+
+		$sql = "SELECT id FROM tbreserva WHERE " .  
+					  "emailHospede = '" . $reserva->getEmailHospede() . "' AND " .
+					  "dataEntrada = '" . $reserva->getDataEntrada() . "' AND " .
+					  "dataSaida = '" . $reserva->getDataSaida() . "' AND " .
+					  "nQuartoSimple = '" . $reserva->getNQuartoSimple() . "' AND " .
+					  "nQuartoLux = '" . $reserva->getNQuartoLux() . "' AND " .
+					  "nQuartoLuxMaster = '" . $reserva->getNQuartoLuxMaster() . "' AND " .
+					  "nQuartoLuxImperial = '" . $reserva->getNQuartoLuxImperial() . "' AND " .
+					  "cartao = '" . $reserva->getCartao() . "' AND " .
+					  "numCartao = '" . $reserva->getNumCartao() . "' AND " .
+					  "nomeCartao = '" . $reserva->getNomeCartao() . "' AND " .
+					  "validade = '" . $reserva->getValidade() . "' AND " .
+					  "codSeguranca = '" . $reserva->getCodSeguranca() . "' AND " .
+					  "parcelas = '" . $reserva->getParcelas() . "'";
+
+		var_dump($sql);
+		$resultRows = $this->db->query($sql);
+
+		if (!($resultRows instanceof PDOStatement)) {
+			throw new Exception("Tem erro no seu SQL!<br> '" . $sql . "'");
+		}
+
+		$r = $resultRows->fetchAll(PDO::FETCH_NUM);
+
+		var_dump($r);
+
+		return $r[0][0];
+	}
+
+
 	public function countDatas(String $dataEntrada, String $dataSaida, String $nameOfQuarto): array{
 
-		$sql = "SELECT nQuartoSimple, COUNT(" . $nameOfQuarto . ") FROM tbreserva " .
+		$sql = "SELECT " . $nameOfQuarto . ", COUNT(" . $nameOfQuarto . ") FROM tbreserva " .
 		"WHERE (dataEntrada >= '" . $dataEntrada . "' AND dataEntrada <= '" . $dataSaida .
-		"') OR (dataEntrada <= '" . $dataEntrada . "' AND dataSaida >= '" . $dataSaida . "') OR (dataSaida >= '" . $dataEntrada . "' AND dataSaida <= '" . $dataSaida . "') GROUP BY nQuartoSimple";
+		"') OR (dataEntrada <= '" . $dataEntrada . "' AND dataSaida >= '" . $dataSaida . "') OR (dataSaida >= '" . $dataEntrada . "' AND dataSaida <= '" . $dataSaida . "') GROUP BY " . $nameOfQuarto;
+
+		//var_dump($sql);
 
 		try {
 			$resultRows = $this->db->query($sql);

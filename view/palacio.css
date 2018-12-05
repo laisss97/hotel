@@ -355,3 +355,21 @@ div.mensagemDisp{
 	color: red;
 	font-size: 60px;
 }
+
+table {
+    border-collapse: collapse;
+    margin:10px;
+    margin-top:30px;
+}
+
+th{
+    border: 1px solid #000000;
+    padding: 10px;
+    background-color: #d6e3bc;
+    text-align: left;
+}
+
+td{
+    border: 1px solid #000000;
+    padding: 10px;
+}

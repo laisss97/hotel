@@ -131,8 +131,8 @@ class HotelManager {
 
         $sum = 0;
 
-        for($i = 0; $i < count($result[1]); $i++)
-            $sum = $sum + $result[1][$i];
+        for($i = 0; $i < count($result); $i++)
+            $sum = $sum + $result[$i][0] * $result[$i][1];
 
         if ($_SESSION[$nameOfQuarto] - $sum >= $quarto){
             $sucesso = true; 
@@ -212,15 +212,32 @@ class HotelManager {
 
         $sucesso = $this->factory->salvarReserva($reserva);
 
+        $id = $this->factory->buscarReservaIgual($reserva);
+
         if(isset($sucesso))
-            $msg = "Obrigada " . $_SESSION["nomeHospede"] . "! Sua reserva no Hotel Palácios foi efetuada com sucesso!";
+            $msg = "Obrigada " . $_SESSION["nomeHospede"] . "! Sua reserva no Hotel Palácios foi efetuada com sucesso! O código dela é " . $id . ".";
         else
             $msg = "Erro ao cadastrar sua reserva no banco de dados.";
 
         return $msg;
 
     }
+    public function salvarReservaEmSessao($reserva){
 
+        $_SESSION['emailHospede'] = $reserva[0]->getEmailHospede();
+        $_SESSION['dataEntrada'] = $reserva[0]->getDataEntrada();
+        $_SESSION['dataSaida'] = $reserva[0]->getDataSaida();
+        $_SESSION['nQuartoSimple'] = $reserva[0]->getNQuartosimple();
+        $_SESSION['nQuartoLux'] = $reserva[0]->getNQuartoLux();
+        $_SESSION['nQuartoLuxMaster'] = $reserva[0]->getNQuartoLuxMaster();
+        $_SESSION['nQuartoLuxImperial'] = $reserva[0]->getNQuartoLuxImperial();
+        $_SESSION['cartao'] = $reserva[0]->getCartao();
+        $_SESSION['numCartao'] = $reserva[0]->getNumCartao();
+        $_SESSION['nomeCartao'] = $reserva[0]->getNomeCartao();
+        $_SESSION['validade'] = $reserva[0]->getValidade();
+        $_SESSION['codSeguranca'] = $reserva[0]->getCodSeguranca();
+        $_SESSION['parcelas'] = $reserva[0]->getParcelas();
+    }
     public function limparSessao(){
 
         if(isset($_SESSION['dataEntrada']))
@@ -271,6 +288,31 @@ class HotelManager {
         $hospede = $this->factory->buscarPorEmail($email);
 
         return $hospede;
+    }
+
+    public function buscarReservaPorEmail(string $email): array{
+
+        $reserva = $this->factory->buscarReservaPorEmail($email);  
+
+        return $reserva;
+    }    
+
+
+    public function buscarReservaPorId(string $id): array{
+
+        $reserva = $this->factory->buscarReservaPorId($id);  
+
+        return $reserva;
+    }    
+
+    public function buscaReservaParaCancelar(string $email): array{
+
+        $reserva = $this->factory->buscarReservaPorEmail($email);  
+
+        for($i = 0; $i < count($reserva); $i++)
+            $msg[$i] = $reserva[$i]->getId();
+
+        return $msg;
     }    
 }
 ?>
